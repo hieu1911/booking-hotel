@@ -2,6 +2,6 @@
 A website about hotel booking 
 
 ## Core tech:
-* Front end: Angular
+* Frontend: Angular
 * Data: MongoDB
 * Api: NodeJS
