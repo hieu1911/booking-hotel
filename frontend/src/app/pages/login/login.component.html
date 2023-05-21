@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="container w-100 justify-content-center d-flex flex-column align-items-center">
+  <div class="  row justify-content-center align-items-center w-100">
+    <div class="col-lg-4 col-md-6 mt-4">
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <label class="mb-4 text-center w-100 fw-bold fs-1" for="">Login</label>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-1">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <label class="mb-2 error-message" [ngClass]="{hidden: noError}">Invalid email or password!</label>
+        <button type="submit" class="btn text-white w-100 fs-5 py-2">Sign in</button>
+      </form>
+      <div>
+        <div class="other-signin mt-3 d-flex justify-content-between">
+          <hr class="">
+          <span>or use one of these options</span>
+          <hr class="">
+        </div>
+        <div class="device-signin d-flex justify-content-between px-2">
+          <span class="rounded-1">
+            <img src="../../../assets/images/facebook.png" alt="">
+          </span>
+          <span class="rounded-1">
+            <img src="../../../assets/images/google.png" alt="">
+          </span>
+          <span class="rounded-1">
+            <img src="../../../assets/images/smartphone.png" alt="">
+          </span>
+        </div>
+        <div class="create-account pb-2">
+          <p>Don't have an account? <a [routerLink]="['/register']">Create now.</a></p>
+        </div>
+        <div class="account-footer">
+          <hr>
+          <p>By signing in or creating an account, you agree with our <a>Terms & Conditions</a> and <a>Privacy Statement</a></p>
+          <hr>
+        </div>
+        <div class="access-footer">
+          <p>All rights reserved.</p>
+          <p>Copyright (2006-2023) – Booking.com™</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

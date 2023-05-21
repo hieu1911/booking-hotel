@@ -1,0 +1,103 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand w-75 text-white fw-bold">Booking.com</a>
+
+        <button
+            class="navbar-toggler bg-gray"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li *ngIf="auth" class="px-md-2">
+                    <a class="nav-link active h-100">
+                        <div class="d-flex h-100">
+                            <span class="text-white fw-bold middle-text h-100 wrapper-icon d-none d-lg-flex"
+                                aria-current="page"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Select your currency">VND</span>
+                            <span class="text-white fw-bold middle-text d-flex wrapper-icon d-lg-none">VND</span>
+                            <span class="d-lg-none px-2 text-white middle-text">VietNam Dong</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item px-md-2">
+                    <a class="nav-link active">
+                        <div class="d-flex">
+                            <img
+                                src="../../../assets/images/vietnam.png"
+                                aria-current="page"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="bottom"
+                                data-bs-custom-class="custom-tooltip"
+                                data-bs-title="Select your language"
+                                class="d-none d-lg-flex wrapper-icon"/>
+                            <img
+                            src="../../../assets/images/vietnam.png"
+                            class="d-flex d-lg-none wrapper-icon"/>
+                            <span class="d-lg-none px-2 text-white middle-text">Select your language</span>
+                        </div> 
+                    </a>
+                </li>
+                <li class="px-md-2">
+                    <a class="nav-link d-flex" aria-current="page">
+                        <div class="d-flex">
+                            <span
+                            class="wrapper-icon justify-content-center d-none d-lg-flex"
+                            aria-current="page"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Help and support">
+                                <fa-icon
+                                [icon]="faCircleQuestion"
+                                [style]="{ color: 'white' }"></fa-icon>
+                            </span>
+                            <span class="wrapper-icon d-flex d-lg-none">
+                                <fa-icon class="middle-text"
+                                    [icon]="faCircleQuestion"
+                                    [style]="{ color: 'white' }"></fa-icon>
+                            </span>
+                            <span class="d-lg-none px-2 text-white middle-text">Help and support</span>
+                        </div>              
+                    </a>
+                </li>
+                <li *ngIf="auth" class="px-md-2">
+                    <a class="nav-link d-flex h-100" aria-current="page">
+                        <div class="d-flex align-items-center h-100">
+                            <span class="wrapper-icon d-flex d-lg-none">
+                                <fa-icon class="middle-text"
+                                [icon]="faRectangleList"
+                                [style]="{ color: 'white' }"
+                                ></fa-icon>
+                            </span>
+                            <a class="text-white mx-2 h-100 middle-text properties">List your properties</a>
+                        </div>
+                    </a>
+                </li> 
+                <li *ngIf="auth">
+                    <div class="devider"></div>
+                </li>
+                <li *ngIf="auth" class="px-md-2 py-1">
+                    <span class="h-100 middle-text">
+                        <button class="btn">Register</button>
+                    </span>
+                </li>
+                <li *ngIf="auth" class="px-md-2 py-1">
+                    <span class="h-100 middle-text">
+                        <button class="btn">Sign in</button>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+  

@@ -13,11 +13,13 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
         const newUser = new User({
             username: req.body.username,
             email: req.body.email,
-            password: hash
+            password: hash,
+            phoneNumber: req.body.phoneNumber || ''
         })
 
         await newUser.save();
-        res.status(200).send('User has been registered!');
+        const {username, email, phoneNumber} = newUser;
+        res.status(200).json({username, email, phoneNumber});
     } catch (err) {
         next(err);
     }
