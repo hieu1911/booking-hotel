@@ -9,13 +9,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  private userSubject = new BehaviorSubject<User>({
-    id: '',
-    username: '',
-    email: '',
-    password: '',
-    phoneNumber: '',
-  });
+  private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
   public userObservable$: Observable<User>;
 
   constructor(private http: HttpClient) {
@@ -27,6 +21,7 @@ export class UserService {
       tap({
         next: (user) => {
           this.userSubject.next(user);
+          this.setUserToLocalStorage(user);
         },
         error: (error) => {
           console.log(error.error);
@@ -51,5 +46,17 @@ export class UserService {
         }
       })
     )
+  }
+
+  private setUserToLocalStorage(user: User): void {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  private getUserFromLocalStorage(): User {
+    const userJson = localStorage.getItem('user');
+    if (userJson) {
+      return JSON.parse(userJson) as User;
+    }
+    return new User('', '', '', '');
   }
 }

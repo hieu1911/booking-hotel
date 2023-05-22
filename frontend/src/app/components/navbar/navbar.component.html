@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand w-75 text-white fw-bold">Booking.com</a>
+        <a class="navbar-brand w-75 text-white fw-bold">
+            <span [routerLink]="['/']">Booking.com</span>
+        </a>
 
         <button
             class="navbar-toggler bg-gray"
@@ -25,7 +27,7 @@
                                 data-bs-custom-class="custom-tooltip"
                                 data-bs-title="Select your currency">VND</span>
                             <span class="text-white fw-bold middle-text d-flex wrapper-icon d-lg-none">VND</span>
-                            <span class="d-lg-none px-2 text-white middle-text">VietNam Dong</span>
+                            <span class="d-lg-none px-2 text-white middle-text desc">VietNam Dong</span>
                         </div>
                     </a>
                 </li>
@@ -43,7 +45,7 @@
                             <img
                             src="../../../assets/images/vietnam.png"
                             class="d-flex d-lg-none wrapper-icon"/>
-                            <span class="d-lg-none px-2 text-white middle-text">Select your language</span>
+                            <span class="d-lg-none px-2 text-white middle-text desc">Select your language</span>
                         </div> 
                     </a>
                 </li>
@@ -51,50 +53,154 @@
                     <a class="nav-link d-flex" aria-current="page">
                         <div class="d-flex">
                             <span
-                            class="wrapper-icon justify-content-center d-none d-lg-flex"
+                            class="wrapper-icon justify-content-center d-none d-lg-flex middle-text"
                             aria-current="page"
                             data-bs-toggle="tooltip"
                             data-bs-placement="bottom"
                             data-bs-custom-class="custom-tooltip"
                             data-bs-title="Help and support">
-                                <fa-icon
-                                [icon]="faCircleQuestion"
-                                [style]="{ color: 'white' }"></fa-icon>
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M9.75 9a2.25 2.25 0 1 1 3 2.122 2.25 2.25 0 0 0-1.5 2.122v1.006a.75.75 0 0 0 1.5 0v-1.006c0-.318.2-.602.5-.708A3.75 3.75 0 1 0 8.25 9a.75.75 0 1 0 1.5 0zM12 16.5a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5zM22.5 12c0 5.799-4.701 10.5-10.5 10.5S1.5 17.799 1.5 12 6.201 1.5 12 1.5 22.5 6.201 22.5 12zm1.5 0c0-6.627-5.373-12-12-12S0 5.373 0 12s5.373 12 12 12 12-5.373 12-12z" />
+                                </svg>
                             </span>
-                            <span class="wrapper-icon d-flex d-lg-none">
-                                <fa-icon class="middle-text"
-                                    [icon]="faCircleQuestion"
-                                    [style]="{ color: 'white' }"></fa-icon>
+                            <span class="wrapper-icon d-flex d-lg-none justify-content-center middle-text">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M9.75 9a2.25 2.25 0 1 1 3 2.122 2.25 2.25 0 0 0-1.5 2.122v1.006a.75.75 0 0 0 1.5 0v-1.006c0-.318.2-.602.5-.708A3.75 3.75 0 1 0 8.25 9a.75.75 0 1 0 1.5 0zM12 16.5a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5zM22.5 12c0 5.799-4.701 10.5-10.5 10.5S1.5 17.799 1.5 12 6.201 1.5 12 1.5 22.5 6.201 22.5 12zm1.5 0c0-6.627-5.373-12-12-12S0 5.373 0 12s5.373 12 12 12 12-5.373 12-12z" />
+                                </svg>
                             </span>
-                            <span class="d-lg-none px-2 text-white middle-text">Help and support</span>
+                            <span class="d-lg-none px-2 text-white middle-text desc">Help and support</span>
                         </div>              
+                    </a>
+                </li>
+                <li [ngClass]="{'d-none': !auth}" class="px-md-2">
+                    <a class="nav-link d-flex position-relative" aria-current="page" (click)="showNotifications = !showNotifications">
+                        <div class="d-flex">
+                            <span
+                            class="wrapper-icon justify-content-center d-none d-lg-flex middle-text position-relative"
+                            aria-current="page"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="bottom"
+                            data-bs-custom-class="custom-tooltip"
+                            data-bs-title="View your notifications">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M9.28 21.961a2.837 2.837 0 0 0 5.445 0 .75.75 0 1 0-1.44-.422 1.337 1.337 0 0 1-2.565 0 .75.75 0 1 0-1.44.422zM12.75 3V.75a.75.75 0 0 0-1.5 0V3a.75.75 0 0 0 1.5 0zm-.75.75a6.75 6.75 0 0 1 6.75 6.75c0 3.154.29 5.436.785 6.994.323 1.02.684 1.59.995 1.84L21 18H3l.59 1.212c.248-.315.572-.958.88-2 .49-1.66.78-3.872.78-6.712A6.75 6.75 0 0 1 12 3.75zm0-1.5a8.25 8.25 0 0 0-8.25 8.25c0 2.702-.272 4.772-.72 6.288-.254.864-.493 1.336-.62 1.5A.75.75 0 0 0 3 19.5h18c.708 0 1.022-.892.47-1.335.019.016-.008-.015-.07-.113-.14-.223-.29-.553-.435-1.012-.443-1.396-.715-3.529-.715-6.54A8.25 8.25 0 0 0 12 2.25z" />
+                                </svg>
+                                <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+                                    2
+                                </span>
+                            </span>
+                            <span class="wrapper-icon d-flex d-lg-none justify-content-center middle-text position-relative">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M9.28 21.961a2.837 2.837 0 0 0 5.445 0 .75.75 0 1 0-1.44-.422 1.337 1.337 0 0 1-2.565 0 .75.75 0 1 0-1.44.422zM12.75 3V.75a.75.75 0 0 0-1.5 0V3a.75.75 0 0 0 1.5 0zm-.75.75a6.75 6.75 0 0 1 6.75 6.75c0 3.154.29 5.436.785 6.994.323 1.02.684 1.59.995 1.84L21 18H3l.59 1.212c.248-.315.572-.958.88-2 .49-1.66.78-3.872.78-6.712A6.75 6.75 0 0 1 12 3.75zm0-1.5a8.25 8.25 0 0 0-8.25 8.25c0 2.702-.272 4.772-.72 6.288-.254.864-.493 1.336-.62 1.5A.75.75 0 0 0 3 19.5h18c.708 0 1.022-.892.47-1.335.019.016-.008-.015-.07-.113-.14-.223-.29-.553-.435-1.012-.443-1.396-.715-3.529-.715-6.54A8.25 8.25 0 0 0 12 2.25z" />
+                                </svg>
+                                <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+                                    2
+                                </span>
+                            </span>
+                            <span class="d-lg-none px-2 text-white middle-text desc">View your notifications</span>
+                        </div>  
+                        <ul *ngIf="showNotifications" class="notis-detail position-absolute d-flex flex-column">
+                            <li class="notis-item">
+                                <div class="icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M8.25 19h-3a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 0 0-1.5 0v7.5a2.25 2.25 0 0 0 2.25 2.25h3a.75.75 0 0 0 0-1.5zM1.234 9.823l8.782-7.43a.75.75 0 0 1 .969 0l7.279 6.159a.75.75 0 1 0 .968-1.146l-7.279-6.159a2.25 2.25 0 0 0-2.906 0L.265 8.678a.75.75 0 1 0 .968 1.146zM15.75 2.5h3L18 1.75v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0 0 1.5zm6.75 14.25a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0zm1.5 0a6.75 6.75 0 1 0-13.5 0 6.75 6.75 0 0 0 13.5 0zm-7.5-3v6a.75.75 0 0 0 1.5 0v-6a.75.75 0 0 0-1.5 0zm-2.25 3.75h6a.75.75 0 0 0 0-1.5h-6a.75.75 0 0 0 0 1.5z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-wrap">Make money by listing your property on Booking.com, whether it's a home, hotel, or anything in between</div>
+                                    <a>Learn more</a>
+                                </div>
+                            </li>
+                            <hr>
+                            <li class="notis-item">
+                                <div class="icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M.311 2.56v6.257a3.75 3.75 0 0 0 1.098 2.651l11.56 11.562a2.25 2.25 0 0 0 3.182 0l6.88-6.88a2.25 2.25 0 0 0 0-3.181L11.468 1.408A3.75 3.75 0 0 0 8.818.31H2.56a2.25 2.25 0 0 0-2.25 2.25zm1.5 0a.75.75 0 0 1 .75-.75h6.257a2.25 2.25 0 0 1 1.59.659l11.562 11.56a.75.75 0 0 1 0 1.06l-6.88 6.88a.75.75 0 0 1-1.06 0L2.47 10.409a2.25 2.25 0 0 1-.659-1.59V2.56zm5.25 3.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm1.5 0a2.25 2.25 0 1 0-4.5 0 2.25 2.25 0 0 0 4.5 0z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-wrap">Looking for low prices? We've got a whole page dedicated to finding you fantastic deals in your favorite places</div>
+                                    <a>Reveal deals</a>
+                                </div>
+                            </li>
+                        </ul>            
                     </a>
                 </li>
                 <li *ngIf="auth" class="px-md-2">
                     <a class="nav-link d-flex h-100" aria-current="page">
                         <div class="d-flex align-items-center h-100">
-                            <span class="wrapper-icon d-flex d-lg-none">
-                                <fa-icon class="middle-text"
-                                [icon]="faRectangleList"
-                                [style]="{ color: 'white' }"
-                                ></fa-icon>
+                            <span class="wrapper-icon d-flex d-lg-none justify-content-center middle-text">
+                                <svg width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M22.5 17.25a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0zm1.5 0a6.75 6.75 0 1 0-13.5 0 6.75 6.75 0 0 0 13.5 0zm-6 3v-3a.75.75 0 0 0-1.5 0v3a.75.75 0 0 0 1.5 0zm-.75-6.689a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25.75.75 0 0 0 0 1.5.375.375 0 1 1 0-.75.375.375 0 0 1 0 .75.75.75 0 0 0 0-1.5zM3.75 7.5h10.5a.75.75 0 0 0 0-1.5H3.75a.75.75 0 0 0 0 1.5zm0 4.5h6a.75.75 0 0 0 0-1.5h-6a.75.75 0 0 0 0 1.5zm0 4.5H7.5a.75.75 0 0 0 0-1.5H3.75a.75.75 0 0 0 0 1.5zm3.75 3H2.25a.75.75 0 0 1-.75-.75V2.25a.75.75 0 0 1 .75-.75h10.629a.75.75 0 0 1 .53.22L16.28 4.59c.14.14.219.331.219.53V7.5a.75.75 0 0 0 1.5 0V5.121a2.25 2.25 0 0 0-.659-1.59L14.47.659A2.25 2.25 0 0 0 12.88 0H2.25A2.25 2.25 0 0 0 0 2.25v16.5A2.25 2.25 0 0 0 2.25 21H7.5a.75.75 0 0 0 0-1.5z" />
+                                </svg>
                             </span>
-                            <a class="text-white mx-2 h-100 middle-text properties">List your properties</a>
+                            <a class="text-white mx-2 h-100 middle-text properties desc text-decoration-none">List your properties</a>
                         </div>
                     </a>
                 </li> 
                 <li *ngIf="auth">
                     <div class="devider"></div>
                 </li>
-                <li *ngIf="auth" class="px-md-2 py-1">
+                <li *ngIf="auth && noLoggin" class="px-md-2 py-1">
                     <span class="h-100 middle-text">
-                        <button class="btn">Register</button>
+                        <button class="btn rounded-1" [routerLink]="['/register']">Register</button>
                     </span>
                 </li>
-                <li *ngIf="auth" class="px-md-2 py-1">
+                <li *ngIf="auth && noLoggin" class="px-md-2 py-1">
                     <span class="h-100 middle-text">
-                        <button class="btn">Sign in</button>
+                        <button class="btn rounded-1" [routerLink]="['/login']">Sign in</button>
                     </span>
+                </li>
+                <li *ngIf="auth && !noLoggin" class="px-md-2 py-1 position-relative">
+                    <div class="d-flex h-100 middle-text" (click)="showSettings = !showSettings">
+                        <span class="logo d-flex align-items-center justify-content-center fs-3 fw-bold rounded-circle me-2">{{user.username.slice(0,1)}}</span>
+                        <span class="username d-flex align-items-center justify-content-center">{{user.username}}</span>
+                    </div>
+
+                    <ul *ngIf="showSettings" class="position-absolute setting d-flex flex-column rounded-1">
+                        <li class="setting-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M16.5 6a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0zM18 6A6 6 0 1 0 6 6a6 6 0 0 0 12 0zM3 23.25a9 9 0 1 1 18 0 .75.75 0 0 0 1.5 0c0-5.799-4.701-10.5-10.5-10.5S1.5 17.451 1.5 23.25a.75.75 0 0 0 1.5 0z" />
+                            </svg>
+                            <span>Manage account</span>
+                        </li>
+                        <li class="setting-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M22.5 14.249v4.5a2.25 2.25 0 0 1-2.25 2.25H3.75a2.25 2.25 0 0 1-2.25-2.25v-9a2.25 2.25 0 0 1 2.25-2.25h16.5a2.25 2.25 0 0 1 2.25 2.25v4.5zm1.5 0v-4.5a3.75 3.75 0 0 0-3.75-3.75H3.75A3.75 3.75 0 0 0 0 9.749v9a3.75 3.75 0 0 0 3.75 3.75h16.5a3.75 3.75 0 0 0 3.75-3.75v-4.5zm-18-7.5v15a.75.75 0 0 0 1.5 0v-15a.75.75 0 0 0-1.5 0zm10.5 0v15a.75.75 0 0 0 1.5 0v-15a.75.75 0 0 0-1.5 0zm0 0v-3a2.25 2.25 0 0 0-2.25-2.25h-4.5a2.25 2.25 0 0 0-2.25 2.25v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v3a.75.75 0 0 0 1.5 0z" />
+                            </svg>
+                            <span>Bookings & Trips</span>
+                        </li>
+                        <li class="setting-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M13.91 24C6.9 24 1.2 18.65 1.2 12.08S6.9 0 13.91 0a13.18 13.18 0 0 1 8.24 2.85 1.2 1.2 0 0 1 .45.85c.029.32-.068.64-.27.89l-2.2 2.64a1.19 1.19 0 0 1-.85.44 1.25 1.25 0 0 1-.89-.29 6.93 6.93 0 0 0-4.48-1.61 6.57 6.57 0 0 0-6.64 6.31 6.42 6.42 0 0 0 6.64 6.15 7 7 0 0 0 3.5-.92V15.4h-2.74c-.68 0-1.23-.55-1.23-1.23v-3c0-.316.122-.62.34-.85a1.31 1.31 0 0 1 .89-.38h6.9a1.24 1.24 0 0 1 1.23 1.23v8.65a1.7 1.7 0 0 1-.62 1.32A13.24 13.24 0 0 1 13.91 24zm0-22.49c-6.17 0-11.2 4.74-11.2 10.57s5 10.41 11.2 10.41A11.76 11.76 0 0 0 21.22 20a.18.18 0 0 0 .07-.15v-8.4H15v2.43h4v4.25l-.33.23a8.47 8.47 0 0 1-4.68 1.39 7.93 7.93 0 0 1-8.15-7.67 8.09 8.09 0 0 1 8.15-7.82 8.45 8.45 0 0 1 5.24 1.79L21 3.85a11.67 11.67 0 0 0-7.09-2.34z" />
+                            </svg>
+                            <span>Genius loyalty program</span>
+                        </li>
+                        <li class="setting-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M1.5 6.75h21a.75.75 0 0 0 0-1.5h-21a.75.75 0 0 0 0 1.5zm1.466 11.474l3.75-12H5.284l3.75 12a.75.75 0 0 0 1.432-.448l-3.75-12c-.22-.701-1.213-.701-1.432 0l-3.75 12a.75.75 0 0 0 1.432.448zM9.75 18a3.75 3.75 0 1 1-7.5 0l-.75.75h9L9.75 18zm1.5 0a.75.75 0 0 0-.75-.75h-9a.75.75 0 0 0-.75.75 5.25 5.25 0 1 0 10.5 0zm3.716.224l3.75-12h-1.432l3.75 12a.75.75 0 0 0 1.432-.448l-3.75-12c-.22-.701-1.213-.701-1.432 0l-3.75 12a.75.75 0 0 0 1.432.448zM21.75 18a3.75 3.75 0 1 1-7.5 0l-.75.75h9l-.75-.75zm1.5 0a.75.75 0 0 0-.75-.75h-9a.75.75 0 0 0-.75.75 5.25 5.25 0 1 0 10.5 0zM12.75 6V1.5a.75.75 0 0 0-1.5 0V6a.75.75 0 0 0 1.5 0z" />
+                            </svg>
+                            <span>Rewards & Wallet</span>
+                        </li>
+                        <li class="setting-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M18.004 0A5.975 5.975 0 0 0 13.5 9.936l-.177-.625-.657 3.78a.75.75 0 0 0 1.133.766l3.423-2.11-.562.092A5.996 5.996 0 1 0 17.999 0zM18 1.5a4.496 4.496 0 1 1-1.004 8.877.75.75 0 0 0-.562.093l-3.423 2.11 1.133.767.657-3.78a.75.75 0 0 0-.178-.625A4.475 4.475 0 0 1 17.996 1.5zM9.375 13.125a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0zm1.5 0a4.125 4.125 0 1 0-8.25 0 4.125 4.125 0 0 0 8.25 0zm2.618 10.025a6.804 6.804 0 0 0-13.486 0 .75.75 0 1 0 1.486.2 5.304 5.304 0 0 1 10.514 0 .75.75 0 1 0 1.486-.2z" />
+                            </svg>
+                            <span>Reviews</span>
+                        </li>
+                        <li class="setting-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M12.541 21.325l-9.588-10a4.923 4.923 0 1 1 6.95-6.976l1.567 1.566a.75.75 0 0 0 1.06 0l1.566-1.566a4.923 4.923 0 0 1 6.963 6.962l-9.6 10.014h1.082zm-1.082 1.038a.75.75 0 0 0 1.082 0l9.59-10.003a6.418 6.418 0 0 0-.012-9.07 6.423 6.423 0 0 0-9.083-.001L11.47 4.854h1.06l-1.566-1.566a6.423 6.423 0 1 0-9.082 9.086l9.577 9.99z" />
+                            </svg>
+                            <span>Saved</span>
+                        </li>
+                        <li class="setting-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24">
+                                <path d="M8.25 19h-3a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 0 0-1.5 0v7.5a2.25 2.25 0 0 0 2.25 2.25h3a.75.75 0 0 0 0-1.5zM1.234 9.823l8.782-7.43a.75.75 0 0 1 .969 0l7.279 6.159a.75.75 0 1 0 .968-1.146l-7.279-6.159a2.25 2.25 0 0 0-2.906 0L.265 8.678a.75.75 0 1 0 .968 1.146zM15.75 2.5h3L18 1.75v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0 0 1.5zm6.75 14.25a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0zm1.5 0a6.75 6.75 0 1 0-13.5 0 6.75 6.75 0 0 0 13.5 0zm-7.5-3v6a.75.75 0 0 0 1.5 0v-6a.75.75 0 0 0-1.5 0zm-2.25 3.75h6a.75.75 0 0 0 0-1.5h-6a.75.75 0 0 0 0 1.5z" />
+                            </svg>
+                            <span>Sign out</span>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
