@@ -1,0 +1,108 @@
+@import '../../utils/variables.scss';
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1140px;
+    }
+}
+
+@media (max-width: 992px) {
+    .hidden-lg {
+        display: none !important;
+    }
+}
+
+.footer-top-menu {
+    background-color: $primary-color;
+
+    button {
+        background-color: transparent;
+        border: 1px solid white;
+        padding: 4px 15px;
+        border-radius: 3px;
+        font-size: 13px;
+    }
+
+    .property-list {
+        padding: 15px;
+        border-bottom: 1px solid white;
+    }
+
+    .action-list {
+        a {
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 15px 10px;
+        }
+    }
+}
+
+.footer-link {
+    padding: 16px 0;
+
+    a {
+        color: #0071c2;
+        font-size: 12px;
+        margin-bottom: 10px;
+        text-decoration: none;
+
+        &:hover {
+            color: #bc5b01;
+        }
+    }
+}
+
+.extranet-link {
+    margin-top: 42px;
+    padding: 24px 0;
+
+    a {
+        color: #0071c2;
+        font-size: 15px;
+        margin-bottom: 10px;
+        text-decoration: none;
+
+        &:hover {
+            color: #bc5b01;
+        }
+    }
+}
+
+.info {
+    font-size: 12px;
+
+    p {
+        padding-top: 4px;
+        text-align: center;
+    }
+}
+
+.price-line-list {
+
+    img {
+        height: 26px;
+        margin: 12px 20px 24px 20px;
+        padding: 0 !important;
+    }
+
+    .booking, .priceline {
+        width: 91px;
+    }
+
+    .kayak {
+        width: 79px;
+    }
+
+    .agoda {
+        width: 70px;
+    }
+
+    .rentalcars {
+        width: 109px;
+    }
+
+    .opentable {
+        width: 95px;
+    }
+}
