@@ -72,7 +72,7 @@
                         </div>              
                     </a>
                 </li>
-                <li [ngClass]="{'d-none': !auth}" class="px-md-2">
+                <li [ngClass]="{'d-none': noLogin}" class="px-md-2">
                     <a class="nav-link d-flex position-relative" aria-current="page" (click)="showNotifications = !showNotifications">
                         <div class="d-flex">
                             <span
@@ -141,20 +141,20 @@
                 <li *ngIf="auth">
                     <div class="devider"></div>
                 </li>
-                <li *ngIf="auth && noLoggin" class="px-md-2 py-1">
+                <li *ngIf="auth && noLogin" class="px-md-2 py-1">
                     <span class="h-100 middle-text">
                         <button class="btn rounded-1" [routerLink]="['/register']">Register</button>
                     </span>
                 </li>
-                <li *ngIf="auth && noLoggin" class="px-md-2 py-1">
+                <li *ngIf="auth && noLogin" class="px-md-2 py-1">
                     <span class="h-100 middle-text">
                         <button class="btn rounded-1" [routerLink]="['/login']">Sign in</button>
                     </span>
                 </li>
-                <li *ngIf="auth && !noLoggin" class="px-md-2 py-1 position-relative">
+                <li *ngIf="auth && !noLogin" class="px-md-2 py-1 position-relative">
                     <div class="d-flex h-100 middle-text" (click)="showSettings = !showSettings">
                         <span class="logo d-flex align-items-center justify-content-center fs-3 fw-bold rounded-circle me-2">{{user.username.slice(0,1)}}</span>
-                        <span class="username d-flex align-items-center justify-content-center">{{user.username}}</span>
+                        <span class="username d-flex align-items-center justify-content-center">{{user ? user.username : ''}}</span>
                     </div>
 
                     <ul *ngIf="showSettings" class="position-absolute setting d-flex flex-column rounded-1">
@@ -194,13 +194,17 @@
                             </svg>
                             <span>Saved</span>
                         </li>
-                        <li class="setting-item">
+                        <li class="setting-item" (click)="signOut()">
                             <svg width="18" height="18" viewBox="0 0 24 24">
                                 <path d="M8.25 19h-3a.75.75 0 0 1-.75-.75v-7.5a.75.75 0 0 0-1.5 0v7.5a2.25 2.25 0 0 0 2.25 2.25h3a.75.75 0 0 0 0-1.5zM1.234 9.823l8.782-7.43a.75.75 0 0 1 .969 0l7.279 6.159a.75.75 0 1 0 .968-1.146l-7.279-6.159a2.25 2.25 0 0 0-2.906 0L.265 8.678a.75.75 0 1 0 .968 1.146zM15.75 2.5h3L18 1.75v3a.75.75 0 0 0 1.5 0v-3a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0 0 1.5zm6.75 14.25a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0zm1.5 0a6.75 6.75 0 1 0-13.5 0 6.75 6.75 0 0 0 13.5 0zm-7.5-3v6a.75.75 0 0 0 1.5 0v-6a.75.75 0 0 0-1.5 0zm-2.25 3.75h6a.75.75 0 0 0 0-1.5h-6a.75.75 0 0 0 0 1.5z" />
                             </svg>
                             <span>Sign out</span>
                         </li>
                     </ul>
+                </li>
+
+                <li *ngIf="auth">
+                    <div class="devider my-3"></div>
                 </li>
             </ul>
         </div>

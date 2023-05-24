@@ -48,8 +48,9 @@ export class UserService {
     )
   }
 
-  private setUserToLocalStorage(user: User): void {
+  setUserToLocalStorage(user: User): void {
     localStorage.setItem('user', JSON.stringify(user));
+    this.userSubject.next(user);
   }
 
   private getUserFromLocalStorage(): User {

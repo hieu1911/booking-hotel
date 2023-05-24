@@ -25,11 +25,18 @@
     .setting {
         top: 0 !important;
         left: 120px !important;
+        z-index: 4;
     }
 }
 
 .navbar {
     background-color: $primary-color;
+}
+
+.navbar-brand {
+    span {
+        font-size: 24px;
+    }
 }
 
 .navbar-collapse {
@@ -108,7 +115,7 @@ path {
 
 .badge {
     top: 10px;
-    left: 30px;
+    left: 28px;
     font-weight: 600;
 }
 
@@ -120,6 +127,7 @@ path {
     width: 220px !important;
     padding: 4px 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 4;
 }
 
 .setting-item {
@@ -153,6 +161,7 @@ path {
     width: 400px !important;
     padding: 4px 0;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    z-index: 2;
 
     hr {
         margin: 8px 0;

@@ -4,7 +4,9 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-a, button {
+a {
     cursor: pointer !important;
     user-select: none;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

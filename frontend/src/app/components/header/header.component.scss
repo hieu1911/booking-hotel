@@ -1,0 +1,201 @@
+@import '../../utils/variables.scss';
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1140px;
+    }
+}
+
+@media (max-width: 992px) {
+    .place-search, .date-search, .options-search {
+        border-width: 0 0 4px 0 !important;
+    }
+
+    .header-title {
+        padding: 64px 5px 240px 5px !important;
+    }
+}
+
+header {
+    background-color: $primary-color;
+}
+
+.header-list-item {
+    margin-left: 4px;
+    padding: 12px 16px;
+    width: fit-content;
+    border-radius: 24px;
+
+    span {
+        font-size: 14px;
+    }
+
+    path {
+        fill: white;
+    }
+
+    &:hover {
+        background-color: #1a4a8d;
+    }
+}
+
+.active {
+    border: 1px solid white;
+    background-color: #1a4a8d;
+}
+
+.header-title {
+    margin-top: 12px;
+    padding: 64px 5px 78px 5px;
+
+    h1 {
+        font-size: 48px;
+        padding-left: 0;
+    }
+
+    p {
+        font-size: 24px;
+        padding-left: 0;
+    }
+}
+
+.header-search {
+    background-color: #fcbd10;
+    padding: 4px;
+    bottom: -28px;
+    border-radius: 2px;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+
+    path {
+        fill: #898787;
+    }
+
+    input {
+        font-weight: 600;
+    }
+}
+
+.place-search, .date-search, .options-search {
+    background-color: white;
+    padding: 12px 16px;
+    border-radius: 2px;
+    border: #fcbd10 solid;
+    border-width: 0 4px 0 0;
+}
+
+.place-search {
+    input {
+        padding: 4px 8px;
+        font-size: 14px;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.date-search {
+    cursor: pointer;
+}
+
+.options-search {
+    cursor: pointer;
+
+    .option-item {
+        padding: 4px 8px;
+        font-weight: 600;
+        user-select: none;
+    }
+}
+
+.search-btn {
+    padding: 0;
+    height: 52px;
+
+    button {
+        font-size: 20px;
+        font-weight: 600;
+        border: none;
+        background-color: #0071c2;
+        border-radius: 2px;
+    }
+}
+
+.date-picker {
+    padding: 4px 8px;
+}
+
+.option-picker-wrapper {
+    top: 60px;
+    right: 0;
+    padding: 32px;
+    background-color: white;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.4);
+    cursor: default;
+
+    button {
+        margin-top: 16px;
+        padding: 4px 12px;
+        border: 2px solid #80b8e1;
+        border-radius: 3px;
+        color: #1d81c9;
+        font-size: 14px;
+        font-weight: 600;
+    }
+}
+
+.option-picker {
+    width: 290px;
+    margin-bottom: 4px;
+    user-select: none;
+
+    div {
+        border: 2px solid #d1d1d1;
+        border-radius: 2px;
+    }
+
+    span {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    button {
+        outline: 0;
+    }
+
+    path {
+        fill: #0373c3;
+    }
+}
+
+.option-btn {
+    display: inline-flex;
+    align-items: center;
+    width: 24px;
+    height: 32px;
+    margin: 4px 8px;
+    cursor: pointer;
+}
+
+.btn-wrapper {
+        
+    &:hover {
+        background-color: #ebf6fa;
+    }
+}
+
+.disable-option-btn {
+    cursor: not-allowed;
+    &:hover {
+        background-color: transparent;
+    } 
+}
+
+.option-title {
+    display: inline-flex;
+    justify-content: center;
+    margin: 0 4px;
+    width: 36px;
+    user-select: none;
+}

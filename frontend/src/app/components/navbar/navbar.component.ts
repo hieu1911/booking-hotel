@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable, zip } from 'rxjs';
+import { Observable } from 'rxjs';
 import * as $ from 'jquery';
 
 import { UserService } from '../../services/user.service';
@@ -17,12 +17,13 @@ declare var bootstrap: any;
 export class NavbarComponent implements OnInit {
   @Input() auth: boolean = false;
   
-  noLoggin: boolean = true;
+  noLogin: boolean = true;
   showSettings: boolean = false;
   showNotifications: boolean = false;
 
   user$: Observable<User>
   user!: User;
+  userPop: any;
 
   constructor(private userService: UserService) {
     this.user$ = this.userService.userObservable$;
@@ -35,9 +36,16 @@ export class NavbarComponent implements OnInit {
     this.user$.subscribe(user => {
       if (user.username !== '') {
         this.user = user;
-        this.noLoggin = false;
+        this.noLogin = false;
+      } else {
+        this.noLogin = true;
       }
-    })
+    });
+  }
+
+  signOut(): void {
+    this.noLogin = true;
+    this.userService.setUserToLocalStorage(new User('', '', '', ''));
   }
 
 }
