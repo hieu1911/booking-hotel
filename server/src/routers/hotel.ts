@@ -10,6 +10,9 @@ import {
     deleteHotel,
 } from '../controllers/hotel';
 
+import { verifyAdmin } from '../middlewares/verifyToken';
+import { checkCityID } from '../middlewares/checkID';
+
 const router = express.Router();
 
 // get
@@ -22,7 +25,7 @@ router.get('/hotel-rooms/:id', getHotelRooms)
 // create
 router.post('/', createHotel);
 // update
-router.put('/:id', updateHotel);
+router.put('/:id', verifyAdmin, checkCityID, updateHotel);
 // delete
 router.delete('/:id', deleteHotel);
 

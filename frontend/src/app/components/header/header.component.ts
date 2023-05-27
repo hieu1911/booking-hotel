@@ -62,4 +62,19 @@ export class HeaderComponent implements OnInit {
     }
   }
   
+  increaseAdults(): void {
+    this.adults = this.adults + 1;
+    this.disableSelectAdults = this.adults < 1;
+  }
+
+  increaseChildren(): void {
+    this.children = this.children + 1;
+    this.disableSelectChildren = this.children < 1;
+  }
+
+  increaseRooms(): void {
+    this.rooms = this.rooms + 1;
+    this.disableSelectRooms = this.rooms < 1;
+  }
+
 }

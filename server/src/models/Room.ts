@@ -13,18 +13,15 @@ const RoomSchema = new mongoose.Schema({
             type: String,
             required: true
         },
-        price: {
-            type: Number,
-            required: true
+        twinBeds: {
+            type: Number
         },
-        maxPeople: {
-            type: Number,
-            required: true
+        queenBed: {
+            type: Number
         },
         desc: {
-            type: String,
-            required: true
-        },
+            type: String
+        }
     },
     {
         timestamps: true

@@ -12,8 +12,10 @@ import userRouter from './routers/user';
 import hotelRouter from './routers/hotel';
 import reservationRouter from './routers/reservation';
 import roomRouter from './routers/room';
-import roomNumberRouter from './routers/roomnumber';
 import roomTypeRouter from './routers/roomtype';
+import countryRouter from './routers/country';
+import cityRouter from './routers/city';
+import roomOptionsRouter from './routers/roomOptions';
 
 const app = express();
 dotenv.config();
@@ -42,8 +44,10 @@ app.use("/api/user", userRouter);
 app.use("/api/hotel", hotelRouter);
 app.use("/api/reservation", reservationRouter);
 app.use("/api/room", roomRouter);
-app.use("/api/roomnumber", roomNumberRouter);
 app.use("/api/roomtype", roomTypeRouter);
+app.use("/api/country", countryRouter);
+app.use("/api/city", cityRouter);
+app.use("/api/roomOptions", roomOptionsRouter);
 
 app.use((err: SystemError, req: express.Request, res: express.Response, next: express.NextFunction) => {
     const status = err.status || 500;

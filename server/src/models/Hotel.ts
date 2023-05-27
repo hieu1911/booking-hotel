@@ -1,6 +1,10 @@
 import mongoose from 'mongoose';
 
 const HotelSchema = new mongoose.Schema({
+    cityID: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
@@ -9,38 +13,39 @@ const HotelSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    country: {
-        type: String,
-        required: true
-    },
-    city: {
-        type: String,
-        required: true
-    },
     address: {
         type: String,
+        required: true
+    },
+    distance: {
+        type: Number,
         required: true
     },
     photos: {
         type: [String]
     },
-    title: {
-        type: String,
-        required: true
+    roomDesc: {
+        type: String
     },
     desc: {
-        type: String,
+        type: [String],
         required: true
+    },
+    review: {
+        type: String
     },
     rating: {
         type: Number,
-        max: 5,
+        max: 10,
         min: 0,
-        default: 5
+        default: 10
     },
     cheapesPrice: {
         type: Number,
         required: true
+    },
+    details: {
+        type: [String]
     }
 })
 

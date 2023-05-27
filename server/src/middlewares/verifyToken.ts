@@ -31,3 +31,13 @@ export const verifyUser = (req: UserRequest, res: Response, next: NextFunction) 
         }
     })
 }
+
+export const verifyAdmin = (req: UserRequest, res: Response, next: NextFunction) => {
+    verifyUser(req, res, () => {
+        if (req.user.isAdmin) {
+            next();
+        } else {
+            return next(createError(403, 'You are not an administrator!'));
+        }
+    })
+}
