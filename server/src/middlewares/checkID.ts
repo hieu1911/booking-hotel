@@ -52,7 +52,6 @@ export const checkRoomID = async (req: Request, res: Response, next: NextFunctio
     try {
         const roomID = req.body.roomID;
         const room = await Room.findById(roomID);
-        console.log(room)
         if (!room) {
             next(createError(404, 'Room does not exist!'));
         }

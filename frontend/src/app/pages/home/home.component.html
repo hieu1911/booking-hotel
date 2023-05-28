@@ -1,7 +1,169 @@
 <app-navbar [auth]='true'></app-navbar>
 <app-header></app-header>
-<div>
-    container   
+<div class="py-4 my-4">
+    <div class="container">
+        <div class="row offer-header">
+            <div class="col-12">
+                <h2 class="mb-1">Offers</h2>
+                <p>Promotions, deals, and special offers for you</p>
+            </div>
+        </div>
+        <div class="row gy-3 offer-content">
+            <div class="col-md-6 col-12">
+                <div class="offer-card position-relative">
+                    <img src="../../../assets/images/offer-1.jpeg" alt="">
+                    <div class="position-absolute">
+                        <h3>Escape for a while</h3>
+                        <p>Enjoy the freedom of a monthly stay on Booking.com</p>
+                        <button>Discover month stays</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="offer-card position-relative">
+                    <img src="../../../assets/images/offer-2.jpeg" alt="">
+                    <div class="position-absolute">
+                        <h3>The great getaway, your way</h3>
+                        <p>Save at least 15% on stays worldwide, from relaxing retreats to off-the-grid adventures</p>
+                        <button>Find Getaway Deals</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container pt-4 mt-4">
+        <div class="row recomend gy-4">
+            <div class="col-md-6 col-12 position-relative">
+                <div class="recomend-card">
+                    <img src="../../../assets/images/dalat.jpg" alt="">
+                </div>
+                <h3>Da Lat</h3>
+            </div>
+            <div class="col-md-6 col-12 position-relative">
+                <div class="recomend-card">
+                    <img src="../../../assets/images/hcm.jpg" alt="">
+                </div>
+                <h3>Ho Chi Minh City</h3>
+            </div>
+            <div class="col-md-4 col-12 position-relative">
+                <div class="recomend-card">
+                    <img src="../../../assets/images/nhatrang.jpg" alt="">
+                </div>
+                <h3>Nha Trang</h3>
+            </div>
+            <div class="col-md-4 col-12 position-relative">
+                <div class="recomend-card">
+                    <img src="../../../assets/images/danang.jpg" alt="">
+                </div>
+                <h3>Da Nang</h3>
+            </div>
+            <div class="col-md-4 col-12 position-relative">
+                <div class="recomend-card">
+                    <img src="../../../assets/images/hoian.jpg" alt="">
+                </div>
+                <h3>Hoi An</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-4 mt-4">
+        <div class="row">
+            <div class="col-12 card-header">
+                <h2>Explore VietNam</h2>
+                <p>These Popular destinations have a lot to offer</p>
+            </div>
+        </div>
+
+        <div class="row position-relative card-content">
+            <owl-carousel-o [options]="customOptions" #owlCard class="px-0">
+                <ng-container *ngFor="let city of cities$ | async">
+                    <ng-template carouselSlide [id]="city.id" >
+                        <div class="slider img-card">
+                            <img [src]="city.photos[0]" alt="">
+                            <p>{{city.name}}</p>
+                        </div>
+                    </ng-template>
+                </ng-container>    
+            </owl-carousel-o>
+            <a class="prev-btn position-absolute" (click)="owlCard.prev()">
+                <img src="../../../assets/images/left.png" alt="">
+            </a>
+            <a class="next-btn position-absolute" (click)="owlCard.next()">
+                <img src="../../../assets/images/right.png" alt="">
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 recomend-title mb-2">
+                <h2>Homes guests love</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngFor="let hotel of topRatingHotel" class="col-lg-3 col-6">
+                <div>
+                    <img [src]="hotel.photos[0]" alt="" class="w-100">
+                    <div class="hotel-detail">
+                        <h3>{{hotel.name}}</h3>
+                        <p>{{hotel.address}}</p>
+                        <p>Starting from <span>US${{hotel.cheapestPrice}}</span></p>
+                        <div class="hotel-quality mt-2">
+                            <span class="rating text-white rounded-1 me-1">{{hotel.rating}}</span>
+                            <span class="review">{{hotel.review}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4 pt-3">
+        <div class="row">
+            <div class="col-12 recomend-title mb-2">
+                <h2>Browse by property type</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <img src="../../../assets/images/apartment.jpeg" alt="">
+                <span class="type-title">Apartments</span>
+            </div>
+            <div class="col-lg-3 col-6">
+                <img src="../../../assets/images/resorts.jpeg" alt="">
+                <span class="type-title">Resorts</span>
+            </div>
+            <div class="col-lg-3 col-6">
+                <img src="../../../assets/images/villas.jpeg" alt="">
+                <span class="type-title">Villas</span>
+            </div>
+            <div class="col-lg-3 col-6">
+                <img src="../../../assets/images/cabins.jpeg" alt="">
+                <span class="type-title">Carbin</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-4 pt-3">
+        <div class="row">
+            <div class="col-12 recomend-title">
+                <h2>Looking for the perfect stay?</h2>
+                <p>Travelers with similar searches booked these properties</p>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngFor="let hotel of topCheapestHotel" class="col-lg-3 col-6">
+                <div>
+                    <img [src]="hotel.photos[0]" alt="" class="w-100">
+                    <div class="hotel-detail">
+                        <h3>{{hotel.name}}</h3>
+                        <p>{{hotel.address}}</p>
+                        <p>Starting from <span>US${{hotel.cheapestPrice}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <app-mailcontact></app-mailcontact>
 <app-footer></app-footer>

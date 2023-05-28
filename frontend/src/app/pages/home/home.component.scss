@@ -1,0 +1,193 @@
+@import '../../utils/variables.scss';
+
+@media (min-width: 1200px) {
+    .container{
+        max-width: 1134px;
+    }
+}
+
+img {
+    cursor: pointer;
+}
+
+.offer-header {
+    h2 {
+        font-size: 24px;
+        font-weight: 600;
+        padding-left: 0;
+    }
+
+    p {
+        font-size: 14px;
+        padding-left: 0;
+    }
+}
+
+.offer-content {
+    img, .offer-card {
+        width: 100%;
+    }
+
+    div .position-absolute {
+        top: 50%;
+        left: 20px;
+        transform: translateY(-50%);
+        width: 300px;
+    }
+
+    h3, p, button {
+        color: white;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 6px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+        background-color: #0071c2;
+        padding: 8px 12px;
+        border-width: 0;
+        border-radius: 2px;
+    }
+}
+
+.recomend-card {
+    position: relative;
+    cursor: pointer;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 100%);
+    }
+}
+
+.recomend {
+    img {
+        width: 100%;
+        height: 270px;
+        object-fit: cover;
+    }
+
+    h3 {
+        position: absolute;
+        top: 20px;
+        left: 28px;
+        font-size: 24px;
+        font-weight: 600;
+        color: white;
+    }
+}
+
+.card-header {
+    padding: 0 12px;
+    h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    p {
+        font-size: 16px;
+        color: #6f6e6c;
+    }
+}
+
+.card-content {
+    p {
+        padding: 8px 0;
+        font-weight: 600;
+    }
+}
+
+.img-card {
+    padding: 12px;
+}
+
+.next-btn, .prev-btn {
+    top: 50%;
+    transform: translateY(-100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.2);
+    z-index: 4;
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.prev-btn {
+    left: -8px;
+}
+
+.next-btn {
+    right: -8px;
+}
+
+.recomend-title {
+    h2 {
+        font-size: 24px;
+        font-weight: 600;
+        margin: 4px 0;
+    }
+
+    p {
+        color: #6f6e6c;
+    }
+}
+
+.hotel-detail {
+    h3 {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+
+    p {
+        font-size: 12px;
+        margin: 4px 0;
+        color: #827e76;
+
+        span {
+            font-size: 16px;
+            font-weight: 600; 
+            color: black;
+        }
+    }
+}
+
+.hotel-quality {
+    .rating {
+        background-color: $primary-color;
+        padding: 6px;
+    }
+    .review {
+        font-size: 12px;
+        font-weight: 500;
+    }
+}
+
+.type-title {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 8px 0;
+}
