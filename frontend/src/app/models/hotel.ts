@@ -5,13 +5,13 @@ export class Hotel {
     public type: string;
     public address: string;
     public distance: number;
-    public photos: [string];
+    public photos: string[];
     public roomDesc: string;
-    public desc: [string];
+    public desc: string[];
     public review: string;
     public rating: number;
     public cheapestPrice: number;
-    public details: [string];
+    public details: string[];
     
     constructor(
         id: string,
@@ -20,13 +20,13 @@ export class Hotel {
         type: string,
         address: string,
         distance: number,
-        photos: [string],
+        photos: string[],
         roomDesc: string,
-        desc: [string],
+        desc: string[],
         review: string,
         rating: number,
         cheapestPrice: number,
-        details: [string]
+        details: string[]
     ) {
         this.id = id;
         this.cityID = cityID;

@@ -10,11 +10,12 @@ import { environment } from '../../environments/environment';
 })
 export class HotelService {
   private initHotel = new Hotel('', '', '', '', '', 0, [''], '', [''], '', 0, 0, ['']);
-  private hotelSubject = new BehaviorSubject<Hotel>(this.initHotel);
-  public hotelObservable$: Observable<Hotel>;
+  private hotelListSubject = new BehaviorSubject<Hotel[]>([this.initHotel]);
+  public hotelListObservable$: Observable<Hotel[]>;
 
   constructor(private http: HttpClient) {
-    this.hotelObservable$ = this.hotelSubject.asObservable();
+    this.hotelListObservable$ = this.hotelListSubject.asObservable();
+    this.initHotelList();
   }
 
   getAllHotels(): Observable<Hotel[]> {
@@ -28,6 +29,14 @@ export class HotelService {
         }
       })
     );
+  }
+
+  initHotelList(): void {
+    this.http.get<Hotel[]>(environment.allHotels).subscribe(hotels => this.hotelListSubject.next(hotels));
+  }
+
+  setHotelList(hotels: Hotel[]): void {
+    this.hotelListSubject.next(hotels);
   }
   
 }

@@ -1,1 +1,65 @@
-<p>list works!</p>
+<app-navbar [auth]='true'></app-navbar>
+<app-header [headerTitle]="true"></app-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3 ps-0 filter">
+            <div class="filter-header">
+                <h4>Filter by:</h4>
+            </div>
+            <div *ngFor="let filter of filters" class="item">
+                <h5>{{filter.title}}</h5>
+                <ul>
+                    <li *ngFor="let item of filter.items">
+                        <div class="form-check d-flex align-items-center px-0">
+                            <input class="form-check-input" type="checkbox" value="" [id]="item">
+                            <label class="form-check-label" [for]="item">
+                              {{item}}
+                            </label>
+                          </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-9 pe-0">
+            <div *ngFor="let hotel of hotelList$ | async" class="d-flex hotel-item">
+                <img [src]="hotel.photos[0]" alt="" class="w-25 h-25 me-3">
+                <div class="w-100">
+                    <div class="d-flex justify-content-between w-100 pb-4 mb-3">
+                        <div>
+                            <h3 class="hotel-name">{{hotel.name}}</h3>
+                            <div class="d-flex hotel-address">
+                                <a href="">{{hotel.address}}</a>
+                                <a href="">Show on map</a>
+                                <p>{{hotel.distance}}m from center</p>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="hotel-review">{{hotel.review}}</span>
+                            <span class="hotel-rating text-white">{{hotel.rating}}</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between w-100">
+                        <div class="hotel-desc">
+                            <h5>{{hotel.desc[0]}}</h5>
+                            <span class="d-inline-block mb-1">{{hotel.desc[1]}}</span>
+                            <p>{{hotel.desc[2]}}</p>
+                            <p>{{hotel.desc[3]}}</p>
+                        </div>
+                        <div class="d-flex flex-column justify-content-end align-items-end hotel-btn">
+                            <h4>US${{hotel.cheapestPrice}}</h4>
+                            <button class="text-white">Sea availability <span>
+                                <svg width="20" height="20" viewBox="0 0 24 26">
+                                    <path d="M9.45 6c.2 0 .39.078.53.22l5 5c.208.206.323.487.32.78a1.1 1.1 0 0 1-.32.78l-5 5a.75.75 0 0 1-1.06 0 .74.74 0 0 1 0-1.06L13.64 12 8.92 7.28a.74.74 0 0 1 0-1.06.73.73 0 0 1 .53-.22zm4.47 5.72zm0 .57z"/>
+                                </svg>
+                            </span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
