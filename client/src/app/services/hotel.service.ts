@@ -43,6 +43,7 @@ export class HotelService {
 
   setHotelList(hotels: Hotel[]): void {
     this.hotelListSubject.next(hotels);
+    console.log(hotels)
   }
 
   getHotelsInCity(cityID: string): void {
@@ -65,6 +66,14 @@ export class HotelService {
 
   getHotelDetail(hotel: Hotel): void {
     this.hotelDetailSubject.next(hotel);
+  }
+
+  getHotelByName(name: string): Observable<Hotel> {
+    return this.httpClient.get<Hotel>(environment.hotel + '/name', {
+      params: {
+        name
+      }
+    });
   }
   
 }

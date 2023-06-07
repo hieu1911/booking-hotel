@@ -12,6 +12,15 @@ export const getHotel = async (req: Request, res: Response, next: NextFunction) 
     }
 }
 
+export const getHotelByName = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const hotel = await Hotel.findOne({ name: req.query.name });
+        res.status(200).json(hotel);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const getAllHotels = async (req: Request, res: Response, next: NextFunction) => {
     const { min, max, limit, ...others } = req.query;
     try {

@@ -1,7 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { UserService } from '../../services/user.service';
+import { CityService } from '../../services/city.service';
+import { HotelService } from '../../services/hotel.service';
 import { User } from '../../models/user';
 
 @Component({
@@ -12,6 +15,8 @@ import { User } from '../../models/user';
 export class HeaderComponent implements OnInit {
   @Input() headerTitle: boolean = false;
   @Input() hotelDetail: boolean = false;
+
+  @ViewChild('inputVal') inputElement: ElementRef;
   
   user$: Observable<User>
 
@@ -27,8 +32,13 @@ export class HeaderComponent implements OnInit {
   disableSelectChildren: boolean = this.children < 1;
   disableSelectRooms: boolean = this.rooms < 1;
 
-  constructor(private userService: UserService) {
+  constructor(inputElement: ElementRef,
+     private router: Router,
+     private userService: UserService,
+     private cityService: CityService,
+     private hotelService: HotelService) {
     this.user$ = this.userService.userObservable$;
+    this.inputElement = inputElement;
   }
 
   
@@ -77,6 +87,27 @@ export class HeaderComponent implements OnInit {
   increaseRooms(): void {
     this.rooms = this.rooms + 1;
     this.disableSelectRooms = this.rooms < 1;
+  }
+
+  searchFunc(): void {
+    let value = this.inputElement.nativeElement.value;
+
+    this.cityService.getCityByName(value).subscribe(city => {
+      if (city) {
+        this.hotelService.getHotelsInCity(city._id);
+      } else {
+        this.hotelService.getHotelByName(value).subscribe(hotel => {
+          console.log(hotel)
+          if (hotel) {
+            this.hotelService.setHotelList([hotel]);
+          } else {
+            this.hotelService.setHotelList([]);
+          }
+        })
+      }
+    });
+
+    this.router.navigate(['/hotel-list']);
   }
 
 }

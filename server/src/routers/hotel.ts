@@ -1,6 +1,7 @@
 import express from 'express';
 import {
     getHotel,
+    getHotelByName,
     getAllHotels,
     getCountByCity,
     getCountByType,
@@ -19,6 +20,7 @@ const router = express.Router();
 
 // get
 router.get('/id/:id', getHotel);
+router.get('/name', getHotelByName);
 // get all
 router.get('/', getAllHotels);
 router.get('/countByCity', getCountByCity);
