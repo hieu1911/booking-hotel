@@ -25,6 +25,24 @@ export const getAllHotels = async (req: Request, res: Response, next: NextFuncti
     }
 }
 
+export const getHotelsByCityID = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const hotels = await Hotel.find({ cityID: req.params.cityID})
+        res.status(200).json(hotels)
+    } catch (err) {
+        next(err);
+    }
+}
+
+export const getHotelsByType = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const hotels = await Hotel.find({ type: req.query.type })
+        res.status(200).json(hotels)
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const getCountByCity = async (req: Request, res: Response, next: NextFunction) => {
     const cities = req.query.cities.toString().split(',');
     try {

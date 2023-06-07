@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
@@ -50,7 +51,7 @@ export class HomeComponent {
     nav: false
   }
 
-  constructor(private cityService: CityService, private hotelService: HotelService) {
+  constructor(private cityService: CityService, private router: Router, private hotelService: HotelService) {
     this.cities$ = this.cityService.getAllCities();
     this.hotels$ = this.hotelService.getAllHotels();
     
@@ -66,6 +67,26 @@ export class HomeComponent {
       this.topCheapestHotel.sort((a, b) => (b.cheapestPrice - a.cheapestPrice));
       this.topCheapestHotel = this.topCheapestHotel.slice(0, 4)
     });
+  }
 
+  navigateByCityName(cityName: string): void {
+    this.cityService.getCityByName(cityName).subscribe(city => {
+      this.navigateHotels(city._id);
+    })
+  }
+
+  navigateHotels(cityID: string): void {
+    this.hotelService.getHotelsInCity(cityID);
+    this.router.navigate(['/hotel-list'])
+  }
+
+  navigateHotelsByType(type: string): void {
+    this.hotelService.getHotelsByType(type);
+    this.router.navigate(['/hotel-list'])
+  }
+
+  navigateHotelDetail(hotel: Hotel): void {
+    this.hotelService.getHotelDetail(hotel);
+    this.router.navigate(['/hotel-detail'])
   }
 }

@@ -11,6 +11,15 @@ export const getRoomOptions = async (req: Request, res: Response, next: NextFunc
     }
 }
 
+export const getRoomOptionsByRoomID = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const roomOptions = await RoomOptions.find({ roomID: req.params.roomID });
+        res.status(200).json(roomOptions);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const getAllRoomOptions = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const roomOptions = await RoomOptions.find();
@@ -38,6 +47,17 @@ export const updateRoomOptions = async (req: Request, res: Response, next: NextF
             { new: true }
         )
         res.status(200).json(updateRoomOptions);
+    } catch (err) {
+        next(err);
+    }
+}
+
+export const updateRoomAvailability = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const roomOptions = await RoomOptions.findById(req.params.id);
+        roomOptions.unavailableDates.push(req.body.dates);
+        const results = await roomOptions.save();
+        res.status(200).json(results)
     } catch (err) {
         next(err);
     }

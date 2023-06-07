@@ -5,13 +5,23 @@ const ReservationSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    roomID: {
+    roomOptionID: {
         type: String,
         required: true
     },
     review: {
         type: String
+    }, 
+    startDate: {
+        type: Date,
+        required: true
+    },
+    endDate: {
+        type: Date,
+        required: true
     }
-})
+},
+{ timestamps: true }
+)
 
-export default mongoose.model('Reservation', ReservationSchema);
+export default mongoose.model('Reservation', ReservationSchema);    

@@ -3,9 +3,22 @@ import { Observable } from 'rxjs';
 import * as $ from 'jquery';
 
 import { UserService } from '../../services/user.service';
+import { ReservationService } from 'src/app/services/reservation.service';
+import { ReservationObject } from 'src/app/services/reservation.service';
 import { User } from '../../models/user';
+import { Reservation } from 'src/app/models/reservation';
 
 declare var bootstrap: any;
+
+interface ReservationObj {
+  photo: string;
+  hotelName: string;
+  roomName: string;
+  price: number;
+  address: string;
+  startDate: string;
+  endDate: string;
+}
 
 @Component({
   selector: 'app-navbar',
@@ -25,8 +38,12 @@ export class NavbarComponent implements OnInit {
   user!: User;
   userPop: any;
 
-  constructor(private userService: UserService) {
+  reservation$: Observable<ReservationObject[]>;
+  reservations: ReservationObj[] = new Array<ReservationObj>();
+
+  constructor(private userService: UserService, private reservationService: ReservationService) {
     this.user$ = this.userService.userObservable$;
+    this.reservation$ = this.reservationService.reservationObservable$;
   }
 
   ngOnInit(): void {
@@ -41,6 +58,26 @@ export class NavbarComponent implements OnInit {
         this.noLogin = true;
       }
     });
+
+    
+    if (this.user) {
+      this.reservationService.getReservation(this.user._id);
+    }
+
+    this.reservation$.subscribe(result => {
+      this.reservations = []
+      result.forEach(reservation => {
+        this.reservations.push({
+          photo: reservation.hotel.photos[0],
+          hotelName: reservation.hotel.name,
+          roomName: reservation.room.title,
+          price: reservation.roomOptions.price,
+          address: reservation.hotel.address,
+          startDate: new Date(reservation.reservation.startDate).toDateString(),
+          endDate: new Date(reservation.reservation.endDate).toDateString()
+        })
+      })
+    })
   }
 
   signOut(): void {

@@ -23,7 +23,7 @@
         </div>
 
         <div class="col-9 pe-0">
-            <div *ngFor="let hotel of hotelList$ | async" class="d-flex hotel-item">
+            <div *ngFor="let hotel of hotelList$ | async" class="d-flex hotel-item" (click)="navigateHotelDetail(hotel)">
                 <img [src]="hotel.photos[0]" alt="" class="w-25 h-25 me-3">
                 <div class="w-100">
                     <div class="d-flex justify-content-between w-100 pb-4 mb-3">
@@ -62,4 +62,5 @@
     </div>
 </div>
 
+<app-mailcontact></app-mailcontact>
 <app-footer></app-footer>

@@ -17,6 +17,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MailcontactComponent } from './components/mailcontact/mailcontact.component';
 import { ListComponent } from './pages/list/list.component';
+import { HotelComponent } from './pages/hotel/hotel.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ListComponent } from './pages/list/list.component';
     NavbarComponent,
     HomeComponent,
     MailcontactComponent,
-    ListComponent
+    ListComponent,
+    HotelComponent
   ],
   imports: [
     BrowserModule,

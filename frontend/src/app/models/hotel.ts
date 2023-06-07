@@ -1,5 +1,5 @@
 export class Hotel {
-    public id: string;
+    public _id: string;
     public cityID: string;
     public name: string;
     public type: string;
@@ -14,7 +14,7 @@ export class Hotel {
     public details: string[];
     
     constructor(
-        id: string,
+        _id: string,
         cityID: string,
         name: string,
         type: string,
@@ -28,7 +28,7 @@ export class Hotel {
         cheapestPrice: number,
         details: string[]
     ) {
-        this.id = id;
+        this._id = _id;
         this.cityID = cityID;
         this.name = name;
         this.type = type;

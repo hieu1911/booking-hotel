@@ -11,6 +11,15 @@ export const getRoom = async (req: Request, res: Response, next: NextFunction) =
     }
 }
 
+export const getRoomsByHotelID = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const rooms = await Room.find({ hotelID: req.params.hotelID });
+        res.status(200).json(rooms);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const getAllRooms = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const rooms = await Room.find();

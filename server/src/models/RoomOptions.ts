@@ -22,9 +22,7 @@ const RoomOptions = new mongoose.Schema({
     desc: {
         type: [String]
     },
-    unavailableDates: {
-        type: [Date]
-    }
+    unavailableDates: [{start: Date, end: Date}]
 })
 
 export default mongoose.model('RoomOption', RoomOptions);

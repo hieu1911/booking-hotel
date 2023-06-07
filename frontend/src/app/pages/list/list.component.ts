@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { HotelService } from '../../services/hotel.service';
@@ -35,10 +36,16 @@ export class ListComponent {
 
   hotelList$: Observable<Hotel[]>;
 
-  constructor(private hotelService: HotelService) {
+  constructor(private hotelService: HotelService, private router: Router) {
+    window.scroll(0, 0)
+    
     this.hotelList$ = this.hotelService.hotelListObservable$;
     this.hotelList$.subscribe(hotelList => {
     })
   }
 
+  navigateHotelDetail(hotel: Hotel): void {
+    this.hotelService.getHotelDetail(hotel);
+    this.router.navigate(['/hotel-detail'])
+  }
 }

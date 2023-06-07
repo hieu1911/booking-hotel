@@ -1,24 +1,26 @@
 import express from 'express';
 
-import { verifyUser } from '../middlewares/verifyToken';
 import {
     getReservation,
+    getReservations,
     getAllReservations,
     createReservation,
     updateReservation,
     deleteReservation
 } from '../controllers/reservation'
-import { checkUserID, checkRoomID } from '../middlewares/checkID'
+import { checkUserID, checkRoomOptionID } from '../middlewares/checkID'
 
 const router = express.Router();
 
 // get
 router.get('/:id', getReservation);
 // get all
-router.get('/user/:uid', getAllReservations);
+router.get('/', getReservations);
+// get all by user id
+router.get('/user/:id', getAllReservations);
 // create
 // /:id is /:uid
-router.post('/:id', verifyUser, checkUserID, checkRoomID, createReservation);
+router.post('/', checkUserID, checkRoomOptionID, createReservation);
 // update
 router.put('/:id', updateReservation);
 // delete

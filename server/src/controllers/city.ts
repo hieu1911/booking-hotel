@@ -13,8 +13,17 @@ export const getCity = async (req: Request, res: Response, next: NextFunction) =
 
 export const getAllCities = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const Cities = await City.find({ userID: req.params.uid });
-        res.status(200).json(Cities);
+        const cities = await City.find({ userID: req.params.uid });
+        res.status(200).json(cities);
+    } catch (err) {
+        next(err);
+    }
+}
+
+export const getCityByName = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const city = await City.findOne({ name: req.query.name });
+        res.status(200).json(city);
     } catch (err) {
         next(err);
     }

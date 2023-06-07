@@ -2,6 +2,7 @@ import express from 'express';
 
 import {
     getRoom,
+    getRoomsByHotelID,
     getAllRooms,
     createRoom,
     updateRoom,
@@ -13,6 +14,8 @@ const router = express.Router();
 
 // get
 router.get('/:id', getRoom);
+//get rooms by hotel id
+router.get('/roomInHotel/:hotelID', getRoomsByHotelID);
 // get all
 router.get('/', getAllRooms);
 // create

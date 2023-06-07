@@ -6,6 +6,7 @@ import City from '../models/City';
 import Hotel from '../models/Hotel';
 import Room from '../models/Room';
 import RoomType from '../models/RoomType';
+import RoomOptions from '../models/RoomOptions';
 import User from '../models/User';
 import { createError } from '../utils/createError';
 
@@ -68,6 +69,19 @@ export const checkRoomTypeID = async (req: Request, res: Response, next: NextFun
         const roomType = await RoomType.findById(roomTypeID);
         if (!roomType) {
             next(createError(404, 'Room Type does not exist!'));
+        }
+        next();
+    } catch (err) {
+        next(err);
+    }
+}
+
+export const checkRoomOptionID = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const roomOptionID = new mongoose.Types.ObjectId(req.body.roomOptionID);
+        const roomOption = await RoomOptions.findById(roomOptionID);
+        if (!roomOption) {
+            next(createError(404, 'Room Option does not exist!'));
         }
         next();
     } catch (err) {

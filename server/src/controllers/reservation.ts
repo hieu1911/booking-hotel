@@ -11,9 +11,18 @@ export const getReservation = async (req: Request, res: Response, next: NextFunc
     }
 }
 
+export const getReservations = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const reservations = await Reservation.find();
+        res.status(200).json(reservations);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const getAllReservations = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const reservations = await Reservation.find({ userID: req.params.uid });
+        const reservations = await Reservation.find({ userID: req.params.id });
         res.status(200).json(reservations);
     } catch (err) {
         next(err);

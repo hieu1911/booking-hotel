@@ -33,31 +33,31 @@
     </div>
     <div class="container pt-4 mt-4">
         <div class="row recomend gy-4">
-            <div class="col-md-6 col-12 position-relative">
+            <div class="col-md-6 col-12 position-relative" (click)="navigateByCityName('Da Lat')">
                 <div class="recomend-card">
                     <img src="../../../assets/images/dalat.jpg" alt="">
                 </div>
                 <h3>Da Lat</h3>
             </div>
-            <div class="col-md-6 col-12 position-relative">
+            <div class="col-md-6 col-12 position-relative" (click)="navigateByCityName('Ho Chi Minh City')">
                 <div class="recomend-card">
                     <img src="../../../assets/images/hcm.jpg" alt="">
                 </div>
                 <h3>Ho Chi Minh City</h3>
             </div>
-            <div class="col-md-4 col-12 position-relative">
+            <div class="col-md-4 col-12 position-relative" (click)="navigateByCityName('Nha Trang')">
                 <div class="recomend-card">
                     <img src="../../../assets/images/nhatrang.jpg" alt="">
                 </div>
                 <h3>Nha Trang</h3>
             </div>
-            <div class="col-md-4 col-12 position-relative">
+            <div class="col-md-4 col-12 position-relative" (click)="navigateByCityName('Da Nang')">
                 <div class="recomend-card">
                     <img src="../../../assets/images/danang.jpg" alt="">
                 </div>
                 <h3>Da Nang</h3>
             </div>
-            <div class="col-md-4 col-12 position-relative">
+            <div class="col-md-4 col-12 position-relative" (click)="navigateByCityName('Hoi An')">
                 <div class="recomend-card">
                     <img src="../../../assets/images/hoian.jpg" alt="">
                 </div>
@@ -77,8 +77,8 @@
         <div class="row position-relative card-content">
             <owl-carousel-o [options]="customOptions" #owlCard class="px-0">
                 <ng-container *ngFor="let city of cities$ | async">
-                    <ng-template carouselSlide [id]="city.id" >
-                        <div class="slider img-card">
+                    <ng-template carouselSlide [id]="city._id">
+                        <div class="slider img-card" (click)="navigateHotels(city._id)">
                             <img [src]="city.photos[0]" alt="">
                             <p>{{city.name}}</p>
                         </div>
@@ -102,7 +102,7 @@
         </div>
         <div class="row">
             <div *ngFor="let hotel of topRatingHotel" class="col-lg-3 col-6">
-                <div>
+                <div (click)="navigateHotelDetail(hotel)">
                     <img [src]="hotel.photos[0]" alt="" class="w-100">
                     <div class="hotel-detail">
                         <h3>{{hotel.name}}</h3>
@@ -125,19 +125,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6" (click)="navigateHotelsByType('apartments')">
                 <img src="../../../assets/images/apartment.jpeg" alt="">
                 <span class="type-title">Apartments</span>
             </div>
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6" (click)="navigateHotelsByType('resorts')">
                 <img src="../../../assets/images/resorts.jpeg" alt="">
                 <span class="type-title">Resorts</span>
             </div>
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6" (click)="navigateHotelsByType('villas')">
                 <img src="../../../assets/images/villas.jpeg" alt="">
                 <span class="type-title">Villas</span>
             </div>
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-3 col-6" (click)="navigateHotelsByType('carbin')">
                 <img src="../../../assets/images/cabins.jpeg" alt="">
                 <span class="type-title">Carbin</span>
             </div>
@@ -153,7 +153,7 @@
         </div>
         <div class="row">
             <div *ngFor="let hotel of topCheapestHotel" class="col-lg-3 col-6">
-                <div>
+                <div (click)="navigateHotelDetail(hotel)">
                     <img [src]="hotel.photos[0]" alt="" class="w-100">
                     <div class="hotel-detail">
                         <h3>{{hotel.name}}</h3>

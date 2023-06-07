@@ -18,7 +18,7 @@ export class CityService {
   }
 
   getAllCities(): Observable<City[]> {
-    return this.http.get<City[]>(environment.allCities).pipe(
+    return this.http.get<City[]>(environment.city).pipe(
       tap({
         next: (cities) => {
           // console.log(cities)
@@ -26,6 +26,19 @@ export class CityService {
         error: (error) => {
           console.log(error.error);
         }
+      })
+    )
+  }
+
+  getCityByName(cityName: string): Observable<City> {
+    return this.http.get<City>(environment.city + '/name', {
+      params: {name: cityName}
+    }).pipe(
+      tap({
+        next: (city) =>{
+          // console.log(city);
+        },
+        error: (error) => console.log(error.error)
       })
     )
   }

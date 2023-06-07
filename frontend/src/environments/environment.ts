@@ -1,6 +1,11 @@
 export const environment = {
     loginUrl: 'http://localhost:8080/api/auth/login',
     registerUrl: 'http://localhost:8080/api/auth/register',
-    allCities: 'http://localhost:8080/api/city',
-    allHotels: 'http://localhost:8080/api/hotel'
+    city: 'http://localhost:8080/api/city',
+    hotel: 'http://localhost:8080/api/hotel',
+    room: 'http://localhost:8080/api/room',
+    roomInHotel: 'http://localhost:8080/api/room/roomInHotel',
+    roomType: 'http://localhost:8080/api/roomtype',
+    roomOptions: 'http://localhost:8080/api/roomOptions',
+    reservation: 'http://localhost:8080/api/reservation'
 };

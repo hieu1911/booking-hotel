@@ -11,6 +11,7 @@ import { User } from '../../models/user';
 })
 export class HeaderComponent implements OnInit {
   @Input() headerTitle: boolean = false;
+  @Input() hotelDetail: boolean = false;
   
   user$: Observable<User>
 
