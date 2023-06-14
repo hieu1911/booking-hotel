@@ -13,7 +13,7 @@ import { checkRoomID } from '../middlewares/checkID';
 const router = express.Router();
 
 // get
-router.get('/:id', getRoomOptions);
+router.get('/id/:id', getRoomOptions);
 // get by room id
 router.get('/room/:roomID', getRoomOptionsByRoomID);
 // get all

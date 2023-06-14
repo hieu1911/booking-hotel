@@ -1,0 +1,101 @@
+@media (min-width: 1200px) {
+    .container{
+        max-width: 100%;
+    }
+}
+
+.widget {
+    width: 24%;
+    padding: 12px 14px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    border-radius: 8px;
+    
+    h3 {
+        font-size: 36px;
+        font-weight: 400;
+        margin: 6px 0;
+    }
+}
+
+.widget-header {
+    h4 {
+        font-size: 18px;
+        color: #bbbbbb;
+    }
+
+    span {
+        
+        img {
+            width: 16px;
+            height: 16px;
+        }
+        
+        color: #008000;
+        font-size: 13px;
+    }
+}
+
+.widget-footer {
+    a {
+        text-decoration: underline;
+        font-size: 13px;
+        font-weight: 400;
+        cursor: pointer;
+        color: black;
+    }
+    
+    img {
+        width: 26px;
+        height: 26px;
+        padding: 4px;
+        border-radius: 4px;
+    }
+
+    .user {
+        background-color: #ffcccc;
+    }
+
+    .hotel {
+        background-color: #f8edd2;
+    }
+
+    .room {
+        background-color: #cce6cc;
+    }
+
+    .reservation {
+        background-color: #e6cce6;
+    }
+}
+
+.total-sale {
+    width: 30%;
+    padding: 16px 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    border-radius: 8px;
+    
+    h4, h5, p {
+        color: #bbbbbb;
+    }
+
+    h3 {
+        margin: 20px;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 13px;
+    }
+}
+
+.hotels-chart {
+    width: 69%;
+    padding: 16px 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+    border-radius: 8px;
+    
+    h4 {
+        color: #bbbbbb;
+        margin-bottom: 20px;
+    }
+}

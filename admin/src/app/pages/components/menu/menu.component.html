@@ -1,0 +1,7 @@
+<div class="pt-4 px-1 wrapper">
+    <div *ngFor="let item of menu" class="menu-item d-flex align-items-center" [ngClass]="{'active': item.active}" (click)="navigate(item.navigator)">
+        <img *ngIf="item.active" [src]="item.img_active" alt="" class="me-3">
+        <img *ngIf="!item.active" [src]=item.img alt="" class="me-3">
+        <span>{{item.title}}</span>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+@import '../../../utils/variables.scss';
+
+.wrapper {
+    border-right: 1px solid #edeeed;
+    padding-bottom: 340px;
+}
+
+.menu-item {
+    padding: 16px 20px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: #edeeed;
+    }
+}
+
+img {
+    
+}
+
+span {
+    font-weight: 500;
+}
+
+.active {
+    padding: 14px 18px;
+    border: 2px solid $primary-color;
+    color: $primary-color;
+}

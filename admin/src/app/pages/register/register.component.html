@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+<div class="container w-100 justify-content-center d-flex flex-column align-items-center">
+    <div class="row justify-content-center align-items-center w-100">
+        <div class="col-lg-4 col-md-6 mt-4 pt-4">
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                <div *ngIf="state == 'email'">
+                    <label class="mb-2 w-100 fw-bold fs-3 py-1" for="">Create an account</label>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email address</label>
+                        <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        aria-describedby="emailHelp"
+                        formControlName="email"
+                        />
+                        <label *ngIf="!noErrorEmail" class="error-message1">Invalid email!</label>
+                    </div>
+                    <button (click)="enterPassword($event)" type="submit" class="btn text-white w-100 fs-6 py-2">
+                        Continue with email
+                    </button>
+                    <div>
+                        <div class="other-signin mt-3 d-flex justify-content-between">
+                            <hr class="" />
+                            <span>or use one of these options</span>
+                            <hr class="" />
+                        </div>
+                        <div class="device-signin d-flex justify-content-between px-2">
+                            <span class="rounded-1">
+                                <img src="../../../assets/images/facebook.png" alt="" />
+                            </span>
+                            <span class="rounded-1">
+                                <img src="../../../assets/images/google.png" alt="" />
+                            </span>
+                            <span class="rounded-1">
+                                <img src="../../../assets/images/smartphone.png" alt="" />
+                            </span>
+                        </div>
+                        <div class="create-account pb-2">
+                            <p>Already have an account? <a [routerLink]="['/login']">Login now.</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="state == 'password'">
+                    <label class="mb-2 w-100 fw-bold fs-3 py-1" for="">Create password</label>
+                    <p class="desc">Use a minimum of 10 characters, including uppercase letters, lowercase letters, and numbers.</p>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                        <label *ngIf="!noErrorPass1" class="error-message1">Invalid password!</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword2" class="form-label">Confirm password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword2" formControlName="passwordConfirm">
+                        <label *ngIf="!noErrorPass2" class="error-message2">The passwords you entered didn't match – try again</label>
+                    </div>
+                    <button (click)="enterInfo($event)" type="submit" class="btn text-white w-100 fs-6 py-2 mb-3">
+                        Enter your information
+                    </button>  
+                </div>
+                <div *ngIf="state == 'info'">
+                    <label class="mb-2 w-100 fw-bold fs-3 py-1" for="">Your information</label>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">User name</label>
+                        <input class="form-control" id="username" formControlName="username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="phoneNumber" class="form-label">Phone number</label>
+                        <input class="form-control" id="phoneNumber" formControlName="phoneNumber">
+                    </div>
+                    <button class="btn text-white w-100 fs-6 py-2 mb-3">
+                        Create account
+                    </button>  
+                </div>
+            </form>
+            <div class="account-footer">
+                <hr />
+                <p>
+                By signing in or creating an account, you agree with our
+                <a>Terms & Conditions</a> and <a>Privacy Statement</a>
+                </p>
+                <hr />
+            </div>
+            <div class="access-footer">
+                <p>All rights reserved.</p>
+                <p>Copyright (2006-2023) – Booking.com™</p>
+            </div>
+        </div>
+    </div>
+</div>

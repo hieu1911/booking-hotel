@@ -30,12 +30,12 @@ export class UserService {
     )
   }
 
-  register(username: string, email: string, password: string, phoneNunber: string): Observable<User> {
+  register(username: string, email: string, password: string, phoneNumber: string): Observable<User> {
     return this.http.post<User>(environment.registerUrl, {
       username,
       email,
       password,
-      phoneNunber
+      phoneNumber
     }).pipe(
       tap({
         next: (user) => {

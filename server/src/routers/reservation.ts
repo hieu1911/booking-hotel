@@ -4,6 +4,7 @@ import {
     getReservation,
     getReservations,
     getAllReservations,
+    getCountReservations,
     createReservation,
     updateReservation,
     deleteReservation
@@ -13,9 +14,10 @@ import { checkUserID, checkRoomOptionID } from '../middlewares/checkID'
 const router = express.Router();
 
 // get
-router.get('/:id', getReservation);
+router.get('/id/:id', getReservation);
 // get all
 router.get('/', getReservations);
+router.get('/count', getCountReservations);
 // get all by user id
 router.get('/user/:id', getAllReservations);
 // create

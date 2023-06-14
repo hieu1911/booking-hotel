@@ -29,6 +29,16 @@ export const getAllReservations = async (req: Request, res: Response, next: Next
     }
 }
 
+export const getCountReservations = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const count = await Reservation.countDocuments();
+        res.status(200).json(count);
+    } catch (err) {
+        next(err);
+    }
+}
+
+
 export const createReservation = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const newReservation = new Reservation(req.body);

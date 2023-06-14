@@ -29,6 +29,15 @@ export const getAllRooms = async (req: Request, res: Response, next: NextFunctio
     }
 }
 
+export const getCountRooms = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const count = await Room.countDocuments();
+        res.status(200).json(count);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const createRoom = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const newRoom = new Room(req.body);

@@ -1,0 +1,114 @@
+<app-navbar></app-navbar>
+<div class="container ps-0">
+    <div class="row">
+        <div class="col-lg-2">
+            <app-menu></app-menu>
+        </div>
+
+        <div class="col-lg-10 ps-0">
+            <div class="py-2">
+                <h3 class="fs-2">Overview</h3>
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="widget">
+                    <div class="d-flex justify-content-between widget-header">
+                        <h4>USERS</h4>
+                        <span>
+                            <img src="../../../assets/images/increase.png">
+                            <span> 25%</span>
+                        </span>
+                    </div>
+                    <h3>{{countUsers}}</h3>
+                    <div class="widget-footer d-flex justify-content-between align-items-end">
+                        <a href="/user">Sea all users</a>
+                        <img src="../../../assets/images/user_widget.png" class="user">
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="d-flex justify-content-between widget-header">
+                        <h4>HOTELS</h4>
+                        <span>
+                            <img src="../../../assets/images/increase.png">
+                            <span> 10%</span>
+                        </span>
+                    </div>
+                    <h3>{{countHotels}}</h3>
+                    <div class="widget-footer d-flex justify-content-between align-items-end">
+                        <a href="/hotel">Sea all hotels</a>
+                        <img src="../../../assets/images/hotel_widget.png" class="hotel">
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="d-flex justify-content-between widget-header">
+                        <h4>ROOMS</h4>
+                        <span>
+                            <img src="../../../assets/images/increase.png">
+                            <span> 15%</span>
+                        </span>
+                    </div>
+                    <h3>{{countRooms}}</h3>
+                    <div class="widget-footer d-flex justify-content-between align-items-end">
+                        <a href='/room'>Sea all rooms</a>
+                        <img src="../../../assets/images/room_widget.png" class="room">
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="d-flex justify-content-between widget-header">
+                        <h4>RESERVATIONS</h4>
+                        <span>
+                            <img src="../../../assets/images/increase.png">
+                            <span> 20%</span>
+                        </span>
+                    </div>
+                    <h3>{{countResevations}}</h3>
+                    <div class="widget-footer d-flex justify-content-between align-items-end">
+                        <a href="/reservation">Sea all reservations</a>
+                        <img src="../../../assets/images/reservation_widget.png" class="reservation">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-4 mt-1 d-flex">
+                <div class="total-sale">
+                    <h4>Total Revenue</h4>
+                    <div id="chart">
+                        <apx-chart
+                            [series]="chartOptions.series"
+                            [chart]="chartOptions.chart"
+                            [plotOptions]="chartOptions.plotOptions"
+                            [labels]="chartOptions.labels"
+                        ></apx-chart>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <h5>Total sales make today</h5>
+                        <h3>${{totalRevenue}}</h3>
+                        <p class="text-center">Previous transactions processing. Last payments may not be included.</p>
+                    </div>
+                </div>
+
+                <div class="hotels-chart ms-3">
+                    <h4>Top number of hotels</h4>
+                    <div id="hotel-chart" #hchart>
+                        <apx-chart
+                            [series]="hotelChartOptions.series"
+                            [chart]="hotelChartOptions.chart"
+                            [dataLabels]="hotelChartOptions.dataLabels"
+                            [plotOptions]="hotelChartOptions.plotOptions"
+                            [yaxis]="hotelChartOptions.yaxis"
+                            [legend]="hotelChartOptions.legend"
+                            [fill]="hotelChartOptions.fill"
+                            [stroke]="hotelChartOptions.stroke"
+                            [tooltip]="hotelChartOptions.tooltip"
+                            [xaxis]="hotelChartOptions.xaxis"
+                        ></apx-chart>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

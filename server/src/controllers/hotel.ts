@@ -21,6 +21,15 @@ export const getHotelByName = async (req: Request, res: Response, next: NextFunc
     }
 }
 
+export const getCountHotels = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const count = await Hotel.countDocuments();
+        res.status(200).json(count);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const getAllHotels = async (req: Request, res: Response, next: NextFunction) => {
     const { min, max, limit, ...others } = req.query;
     try {
