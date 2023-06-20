@@ -31,9 +31,9 @@ export class NavbarComponent implements OnInit {
       if (user.username !== '') {
         this.user = user;
         this.noLogin = false;
-      } else {
+      } else if (this.router.url !== '/register') {
         this.noLogin = true;
-        this.router.navigate(['/login'])
+        this.router.navigate(['/login']);
       }
     });
   }

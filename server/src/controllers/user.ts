@@ -19,6 +19,15 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
     }
 }
 
+export const getUserByName = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const users = await User.find({username: req.query.name});
+        res.status(200).json(users);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const getNumberOfUsers = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const count = await User.countDocuments();

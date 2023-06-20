@@ -1,6 +1,6 @@
 import express from 'express';
 import { verifyUser } from '../middlewares/verifyToken';
-import { getUser, getAllUsers, getNumberOfUsers, updateUser, deleteUser } from '../controllers/user';
+import { getUser, getAllUsers, getNumberOfUsers, getUserByName, updateUser, deleteUser } from '../controllers/user';
 
 const router = express.Router();
 
@@ -9,9 +9,10 @@ router.get('/id/:id', verifyUser, getUser);
 // get all
 router.get('/', getAllUsers);
 router.get('/numUsers', getNumberOfUsers);
+router.get('/getByName', getUserByName);
 // update
-router.put('/:id', verifyUser, updateUser);
+router.put('/update/:id', updateUser);
 // delete
-router.delete('/:id', verifyUser, deleteUser);
+router.delete('/delete/:id', deleteUser);
 
 export default router;

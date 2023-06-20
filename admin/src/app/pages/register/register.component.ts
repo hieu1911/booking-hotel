@@ -83,6 +83,7 @@ export class RegisterComponent implements OnInit {
       this.registerForm.value.email.trim(),
       this.registerForm.value.password.trim(),
       this.registerForm.value.phoneNumber.trim() || '',
+      true
     ).subscribe({
       next: (user: any) => {
         this.router.navigateByUrl('/login');

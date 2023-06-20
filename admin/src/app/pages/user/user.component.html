@@ -4,5 +4,212 @@
         <div class="col-lg-2">
             <app-menu [nav]="'/user'"></app-menu>
         </div>
+        <div class="col-lg-10 px-4 pt-4">
+            <div class="d-flex justify-content-between pb-4 user-header">
+                <h4>Manage Users</h4>
+                <button class="btn add-btn"
+                        data-bs-toggle="modal" data-bs-target="#addUserModal"
+                ><span class="p-2"><img src="../../../assets/images/add.png"/></span>Add User
+                </button>
+                <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Add user</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form [formGroup]="createForm" (ngSubmit)="createUser">
+                                    <div class="d-flex align-items-center my-3">
+                                        <label for="userName" class="form-label me-3">User Name</label>
+                                        <div class="flex-grow-1">
+                                            <input type="text" class="form-control" id="userName"
+                                                   formControlName="username">
+                                            <label *ngIf="!noErrorUserName" class="error-message">Please enter user
+                                                name!</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center my-3">
+                                        <label for="userName" class="form-label me-3">Email</label>
+                                        <div class="flex-grow-1">
+                                            <input type="text" class="form-control" id="email"
+                                                   formControlName="email">
+                                            <label *ngIf="!noErrorEmail" class="error-message">Invalid email!</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center my-3">
+                                        <label for="userName" class="form-label me-3">Password</label>
+                                        <div class="flex-grow-1">
+                                            <input type="text" class="form-control" id="password"
+                                                   formControlName="password">
+                                            <label *ngIf="!noErrorPassword" class="error-message">Invalid
+                                                Password!</label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center my-3">
+                                        <label for="userName" class="form-label me-3">Phone Number</label>
+                                        <div class="flex-grow-1">
+                                            <input type="text" class="form-control" id="phoneNumber"
+                                                   formControlName="phoneNumber">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <label class="form-label me-3">Type</label>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="type"
+                                                   (change)="createAdmin = false"
+                                                   id="userCheckBox" [checked]="!createAdmin">
+                                            <label class="form-check-label" for="userCheckBox">
+                                                User
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="type"
+                                                   (change)="createAdmin = true"
+                                                   id="adminCheckBox">
+                                            <label class="form-check-label" for="adminCheckBox">
+                                                Admin
+                                            </label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn delete-btn" data-bs-dismiss="modal" id="btn-close">
+                                    Close
+                                </button>
+                                <button type="button" class="btn edit-btn close-btn" (click)="createUser()">Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <div class="mt-2 user-list">
+                <div class="d-flex justify-content-between p-4 mx-5 user-search">
+                    <h4>User List</h4>
+                    <div class="">
+                        <img src="../../../assets/images/search.png"/>
+                        <input type="text" placeholder="Search user" [value]="searchVal" [formControl]="inputForm"/>
+                    </div>
+                </div>
+                <div>
+                    <table class="w-100">
+                        <thead>
+                        <tr>
+                            <th scope="col" class="ps-4">No</th>
+                            <th scope="col">User name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone Number</th>
+                            <th scope="col">Type</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let user of allUsers$ | async; index as i">
+                            <td class="ps-4">{{i + 1}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.phoneNumber}}</td>
+                            <td>
+                                {{user.isAdmin ? 'Admin' : 'User'}}
+                            </td>
+                            <td>
+                                <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#editUserModal" (click)="initEditUserForm(user)">
+                                        <span>
+                                            <img src="../../../assets/images/edit.png"/>
+                                        </span>
+                                    Edit
+                                </button>
+                                <div class="modal fade" id="editUserModal" tabindex="-1"
+                                     aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="editModalLabel">Edit user</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form [formGroup]="editForm" (ngSubmit)="createUser">
+                                                    <div class="d-flex align-items-center my-3">
+                                                        <label for="userName" class="form-label me-3">User Name</label>
+                                                        <div class="flex-grow-1">
+                                                            <input type="text" class="form-control" id="updateUserName"
+                                                                   formControlName="username">
+                                                            <label *ngIf="!noErrorUserName" class="error-message">Please
+                                                                enter user
+                                                                name!</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center my-3">
+                                                        <label for="userName" class="form-label me-3">Email</label>
+                                                        <div class="flex-grow-1">
+                                                            <input type="text" class="form-control" id="updateEmail"
+                                                                   formControlName="email">
+                                                            <label *ngIf="!noErrorEmail" class="error-message">Invalid
+                                                                email!</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex align-items-center my-3">
+                                                        <label for="userName" class="form-label me-3">Phone
+                                                            Number</label>
+                                                        <div class="flex-grow-1">
+                                                            <input type="text" class="form-control" id="updatePhoneNumber"
+                                                                   formControlName="phoneNumber">
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <label class="form-label me-3">Type</label>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="type"
+                                                                   (change)="updateAdmin = false"
+                                                                   id="updateUserCheckBox" [checked]="!updateAdmin">
+                                                            <label class="form-check-label" for="userCheckBox">
+                                                                User
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="radio" name="type"
+                                                                   (change)="updateAdmin = true"
+                                                                   id="updateAdminCheckBox" [checked]="updateAdmin">
+                                                            <label class="form-check-label" for="adminCheckBox">
+                                                                Admin
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn delete-btn d-flex justify-content-center" data-bs-dismiss="modal"
+                                                        id="update-btn-close"><span>Close</span>
+                                                </button>
+                                                <button type="button" class="btn edit-btn close-btn d-flex justify-content-center"
+                                                        (click)="onUpdateUser(user)">Save
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <button class="delete-btn" (click)="onDeleteUser(user)">
+                                        <span>
+                                            <img src="../../../assets/images/delete.png"/>
+                                        </span>
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

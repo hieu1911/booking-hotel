@@ -75,7 +75,6 @@ export class DashboardComponent{
         this.hotelServices.getCountHotelInCities(this.categories);
         this.hotelServices.countHotelInCities$.subscribe(r => {
             this.dataChats = r;
-            console.log(this.dataChats)
             this.hotelChartOptions = {
                 ...this.hotelChartOptions,
                 series: [
