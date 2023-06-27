@@ -61,6 +61,15 @@ export const getHotelsByType = async (req: Request, res: Response, next: NextFun
     }
 }
 
+export const getAllHotelsByName = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const hotels = await Hotel.find({name: req.query.name});
+        res.status(200).json(hotels);
+    } catch (err) {
+        next(err);
+    }
+}
+
 export const getCountByCity = async (req: Request, res: Response, next: NextFunction) => {
     const cities = req.query.cities.toString().split(',');
     try {

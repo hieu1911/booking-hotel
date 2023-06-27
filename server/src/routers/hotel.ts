@@ -9,6 +9,7 @@ import {
     getHotelRooms,
     getHotelsByCityID,
     getHotelsByType,
+    getAllHotelsByName,
     createHotel,
     updateHotel,
     deleteHotel,
@@ -30,11 +31,12 @@ router.get('/countByType', getCountByType);
 router.get('/hotel-rooms/:id', getHotelRooms);
 router.get('/hotelsInCity/:cityID', getHotelsByCityID);
 router.get('/hotelsType', getHotelsByType);
+router.get('/getByName', getAllHotelsByName);
 // create
 router.post('/', createHotel);
 // update
-router.put('/:id', verifyAdmin, checkCityID, updateHotel);
+router.put('/update/:id', checkCityID, updateHotel);
 // delete
-router.delete('/:id', deleteHotel);
+router.delete('/delete/:id', deleteHotel);
 
 export default router;

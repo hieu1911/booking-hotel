@@ -98,7 +98,7 @@ export class UserService {
     }
 
     updateUser(id: string, username: string, email: string, phoneNumber: string, isAdmin: boolean): Observable<User> {
-        console.log(id, username, email, phoneNumber, isAdmin)
+        // console.log(id, username, email, phoneNumber, isAdmin)
         return this.http.put<User>(environment.user + `/update/${id}`, {
             username,
             email,

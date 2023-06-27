@@ -10,8 +10,15 @@ import { environment } from "../../environments/environment";
 })
 export class CityService {
 
+    private allCitiesSubject: BehaviorSubject<City[]> = new BehaviorSubject<City[]>([]);
+    allCities$: Observable<City[]>;
+
     constructor(private http: HttpClient) {
-        
+        this.allCities$ = this.allCitiesSubject.asObservable();
+    }
+
+    getAllCity() {
+        this.http.get<City[]>(environment.city).subscribe(cities => this.allCitiesSubject.next(cities));
     }
 
     getCityByName(cityName: string): Observable<City> {

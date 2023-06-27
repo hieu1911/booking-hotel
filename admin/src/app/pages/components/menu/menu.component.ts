@@ -25,13 +25,6 @@ export class MenuComponent implements OnInit {
             navigator: '/user'
         },
         {
-            img: '../../../assets/images/city.png',
-            img_active: '../../../assets/images/city_active.png',
-            title: 'City',
-            active: false,
-            navigator: '/city'
-        },
-        {
             img: '../../../assets/images/hotel.png',
             img_active: '../../../assets/images/hotel_active.png',
             title: 'Hotel',
