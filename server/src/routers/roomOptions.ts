@@ -6,7 +6,8 @@ import {
     getAllRoomOptions,
     createRoomOptions,
     updateRoomOptions,
-    updateRoomAvailability
+    updateRoomAvailability,
+    deleteRoomOptions
 } from '../controllers/roomOptions';
 import { checkRoomID } from '../middlewares/checkID';
 
@@ -23,6 +24,8 @@ router.post('/', checkRoomID, createRoomOptions);
 // update
 router.put('/:id', updateRoomOptions);
 // update avaibility 
-router.put('/avaibility/:id', updateRoomAvailability)
+router.put('/avaibility/:id', updateRoomAvailability);
+// delete
+router.delete('/delete/:id', deleteRoomOptions);
 
 export default router;

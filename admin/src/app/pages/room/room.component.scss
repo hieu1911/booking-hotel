@@ -1,5 +1,160 @@
+@import "../../utils/variables.scss";
+
 @media (min-width: 1200px) {
-    .container{
+    .container {
         max-width: 100%;
+    }
+}
+
+.room-header {
+
+    h4 {
+        margin: auto 0;
+    }
+
+    .add-btn {
+        background-color: $primary-color;
+        color: white;
+        font-weight: 600;
+        padding: 4px 36px 4px 28px;
+
+        img {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    .add-btn, span {
+        display: inline-flex;
+        align-items: center;
+    }
+}
+
+.room-list {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.room-search {
+
+    div {
+        background-color: #f3f5f7;
+        margin: auto 0;
+        padding: 8px 12px;
+        border-radius: 20px;
+    }
+
+    img {
+        width: 16px;
+        height: 16px;
+        margin: 0 12px 4px 8px;
+        user-select: none;
+    }
+
+    input {
+        background-color: #f3f5f7;
+        border: none;
+        outline: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.modal, table {
+    button {
+        background-color: transparent;
+        font-weight: 500;
+        padding: 5px 0;
+        width: 110px;
+        border-radius: 4px;
+    }
+
+    .edit-btn {
+        color: #1ccea5;
+        border: 2px solid #1ccea5;
+    }
+
+    .delete-btn {
+        color: #e96065;
+        border: 2px solid #e96065;
+    }
+}
+
+table {
+    thead {
+        th {
+            font-weight: 500;
+            height: 40px;
+
+            &:nth-child(1) {
+                width: 8%;
+            }
+
+            &:nth-child(2) {
+                width: 15%;
+            }
+
+            &:nth-child(3) {
+                width: 13%;
+            }
+
+            &:nth-child(4) {
+                width: 20%;
+            }
+
+            &:nth-child(5) {
+                width: 7%;
+            }
+
+            &:nth-child(6) {
+                width: 7%;
+            }
+
+            &:nth-child(7) {
+                width: 10%;
+            }
+
+            &:nth-child(8) {
+                width: 10%;
+            }
+
+            &:nth-child(9) {
+                width: 10%;
+            }
+        }
+    }
+
+    tbody {
+        td {
+            border-top: 1px solid #d1d1d1;
+            padding-right: 12px;
+        }
+
+        tr {
+            height: 60px;
+        }
+
+
+        img {
+            margin: 0 12px;
+        }
+
+        button, span {
+            display: inline-flex;
+            align-items: center;
+        }
+
+    }
+}
+
+form {
+    label {
+        width: 40px;
+        margin: 0 16px;
+    }
+
+    hr {
+        margin: 16px -20px;
     }
 }

@@ -62,3 +62,12 @@ export const updateRoomAvailability = async (req: Request, res: Response, next: 
         next(err);
     }
 }
+
+export const deleteRoomOptions = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        await RoomOptions.findByIdAndDelete(req.params.id);
+        res.status(200).json('Room Options has been deleted!');
+    } catch (err) {
+        next(err);
+    }
+}
