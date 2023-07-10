@@ -524,7 +524,10 @@
                     <p>Includes taxes and fees</p>
                 </div>
                 <div class="reserve">
-                    <button class="w-100 text-white mb-2 reserve-btn" (click)="reservated()"
+                    <button class="w-100 text-white mb-2 reserve-btn" (click)="reservated()" *ngIf="noLogin"
+                    >I'll reserve</button>
+
+                    <button class="w-100 text-white mb-2 reserve-btn" (click)="reservated()" *ngIf="!noLogin"
                     data-bs-toggle="modal" data-bs-target="#exampleModal"
                     >I'll reserve</button>
     

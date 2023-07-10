@@ -118,7 +118,7 @@ export class HotelService {
         cheapestPrice: number
     ): Observable<Hotel> {
 
-        console.log(id)
+        // console.log(id)
 
         return this.httpClient.put<Hotel>(environment.hotel + `/update/${id}`, {
             cityID,

@@ -43,7 +43,7 @@ export class HotelService {
 
   setHotelList(hotels: Hotel[]): void {
     this.hotelListSubject.next(hotels);
-    console.log(hotels)
+    // console.log(hotels)
   }
 
   getHotelsInCity(cityID: string): void {

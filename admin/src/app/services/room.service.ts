@@ -110,8 +110,8 @@ export class RoomService {
             wifi: createForm.value.wifi,
             balcony: createForm.value.balcony,
             cityView: createForm.value.cityView,
-            airConditioning: createForm.value.airConditioning,
-            attachedBathroom: createForm.value.attachedBathroom,
+            airConditioning: createForm.value.ac,
+            attachedBathroom: createForm.value.ab,
             flatScreenTV: createForm.value.flatScreenTV,
             miniBar: createForm.value.miniBar,
             privateBathroom: createForm.value.privateBathroom,
@@ -120,29 +120,29 @@ export class RoomService {
             patio: createForm.value.patio,
             oceanView: createForm.value.oceanView
         })
-        // .subscribe(roomType => {
-        //     console.log(roomType)
-        //     this.httpClient.post<Room>(environment.room, {
-        //         hotelID: createForm.value.hotel,
-        //         roomTypeID: roomType._id,
-        //         title: createForm.value.title,
-        //         twinBeds: createForm.value.twinBeds,
-        //         queenBed: createForm.value.queenBed,
-        //         desc: createForm.value.desc
-        //     }).subscribe(room => {
-        //         console.log(room)
-        //         this.httpClient.post<RoomOptions>(environment.roomOptions, {
-        //             roomID: room._id,
-        //             maxPeoples: createForm.value.maxPeople,
-        //             price: createForm.value.price,
-        //             title: createForm.value.offer,
-        //             desc: [createForm.value.benefit1, createForm.value.benefit2],
-        //             breakfastOption: createForm.value.breakfast
-        //         }).subscribe(roomOption => {
-        //             this.getRoomObj();
-        //         })
-        //     })
-        // })
+        .subscribe(roomType => {
+            console.log(roomType)
+            this.httpClient.post<Room>(environment.room, {
+                hotelID: createForm.value.hotel,
+                roomTypeID: roomType._id,
+                title: createForm.value.title,
+                twinBeds: createForm.value.twinB,
+                queenBed: createForm.value.queenB,
+                desc: createForm.value.desc
+            }).subscribe(room => {
+                console.log(room)
+                this.httpClient.post<RoomOptions>(environment.roomOptions, {
+                    roomID: room._id,
+                    maxPeoples: createForm.value.maxPeople,
+                    price: createForm.value.price,
+                    title: createForm.value.offer,
+                    desc: [createForm.value.benefit1, createForm.value.benefit2],
+                    breakfastOption: createForm.value.breakfast
+                }).subscribe(roomOption => {
+                    this.getRoomObj();
+                })
+            })
+        })
     }
 
     addRoom(addRoomForm: FormGroup) {
@@ -153,6 +153,18 @@ export class RoomService {
             title: addRoomForm.value.offer,
             desc: [addRoomForm.value.benefit1, addRoomForm.value.benefit2],
             breakfastOption: addRoomForm.value.breakfast
+        }).subscribe(roomOption => {
+            this.getRoomObj();
+        })
+    }
+
+    updateRoomOption(editForm: FormGroup): void {
+        this.httpClient.put<RoomOptions>(environment.roomOptions + `/update/${editForm.value.roomID}`, {
+            maxPeoples: editForm.value.maxPeople,
+            price: editForm.value.price,
+            title: editForm.value.offer,
+            desc: [editForm.value.benefit1, editForm.value.benefit2],
+            breakfastOption: editForm.value.breakfast
         }).subscribe(roomOption => {
             this.getRoomObj();
         })

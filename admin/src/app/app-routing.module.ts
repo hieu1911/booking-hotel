@@ -7,7 +7,6 @@ import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 import {UserComponent} from "./pages/user/user.component";
 import {HotelComponent} from "./pages/hotel/hotel.component";
 import {RoomComponent} from "./pages/room/room.component";
-import {ReservationComponent} from "./pages/reservation/reservation.component";
 
 const routes: Routes = [
     {path: '', component: DashboardComponent},
@@ -16,7 +15,6 @@ const routes: Routes = [
     {path: 'user', component: UserComponent},
     {path: 'hotel', component: HotelComponent},
     {path: 'room', component: RoomComponent},
-    {path: 'reservation', component: ReservationComponent}
 ];
 
 @NgModule({

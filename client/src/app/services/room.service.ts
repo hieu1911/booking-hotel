@@ -30,10 +30,7 @@ export class RoomService {
   }
 
   public getRoomInHotel(hotelID: string): void{
-    if (hotelID == '') {
-      hotelID = '6471ccdd7fc80551c57d0dc5';
-    }
-
+    this.roomSubject.next([]);
     this.httpClient.get<Room[]>(environment.roomInHotel + `/${hotelID}`).subscribe(rooms => {
       let roomObservable: RoomObject[] = [];
       rooms.forEach(room => {

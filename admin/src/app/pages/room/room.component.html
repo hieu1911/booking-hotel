@@ -257,7 +257,7 @@
                                 <button type="button" class="btn delete-btn" data-bs-dismiss="modal" id="btn-close">
                                     Close
                                 </button>
-                                <button type="button" class="btn edit-btn close-btn" (click)="addRoom()">Save
+                                <button type="button" class="btn edit-btn close-btn" (click)="submitCreateForm()">Save
                                 </button>
                             </div>
                         </div>
@@ -315,184 +315,60 @@
                                                         aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <!-- <form [formGroup]="editForm" (ngSubmit)="createHotel">
-                                                    <div class="d-flex">
-                                                        <div class="w-100 pe-4">
-                                                            <div class="d-flex align-items-center my-3">
-                                                                <label for="city" class="form-label me-3">City</label>
-                                                                <div class="flex-grow-1 ms-4">
-                                                                    <select class="form-select" aria-label="Default select example" formControlName="city">
-                                                                        <option *ngFor="let city of allCities$ | async" [value]="city._id">{{city.name}}</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex align-items-center my-3">
-                                                                <label for="type" class="form-label me-3">Type</label>
-                                                                <div class="flex-grow-1 ms-4">
-                                                                    <select class="form-select" aria-label="Default select example" formControlName="type">
-                                                                        <option value="hotel">Hotel</option>
-                                                                        <option value="apartment">Apartment</option>
-                                                                        <option value="resort">Resort</option>
-                                                                        <option value="villa">Villa</option>
-                                                                        <option value="carbin">Carbin</option>
-                                                                      </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <label for="distance" class="form-label me-3">Distance</label>
-                                                                    <div class="flex-grow-1 ms-4">
-                                                                        <input type="text" class="form-control" id="distance"
-                                                                        formControlName="distance">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="d-flex align-items-center">
-                                                                    <label for="minPrice" class="form-label me-3">Price</label>
-                                                                    <div class="flex-grow-1 ms-4">
-                                                                        <input type="text" class="form-control" id="minPrice"
-                                                                        formControlName="minPrice">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="w-100 ps-4">
-                                                            <div class="d-flex align-items-center my-3">
-                                                                <label for="name" class="form-label me-3">Name</label>
-                                                                <div class="flex-grow-1 ms-4">
-                                                                    <input type="text" class="form-control" id="name"
-                                                                    formControlName="name">
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex align-items-center my-3">
-                                                                <label for="address" class="form-label me-3">Address</label>
-                                                                <div class="flex-grow-1 ms-4">
-                                                                    <input type="text" class="form-control" id="address"
-                                                                    formControlName="address">
-                                                                </div>
-                                                            </div>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="d-flex align-items-center">
-                                                                    <label for="rating" class="form-label me-3">Rating</label>
-                                                                    <div class="flex-grow-1 ms-4">
-                                                                        <input type="text" class="form-control" id="rating"
-                                                                        formControlName="rating">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="d-flex align-items-center">
-                                                                    <label for="review" class="form-label me-3">Review</label>
-                                                                    <div class="flex-grow-1 ms-4">
-                                                                        <input type="text" class="form-control" id="review"
-                                                                        formControlName="review">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr/>
+                                                <form [formGroup]="editForm" (ngSubmit)="onUpdateRoom">
                                                     <div class="d-flex">
                                                         <div class="w-100 pe-4">
                                                             <div class="d-flex align-items-center mb-3">
-                                                                <label for="desc0" class="form-label me-3">Desc</label>
-                                                                <div class="flex-grow-1 ms-4">
-                                                                    <input type="text" class="form-control" id="desc0"
-                                                                    formControlName="desc0">
+                                                                <div class="d-flex align-items-center">
+                                                                    <label for="maxPeople" class="form-label me-3">Peoples</label>
+                                                                    <div class="flex-grow-1 ms-4">
+                                                                        <input type="text" class="form-control" id="maxPeople"
+                                                                        formControlName="maxPeople">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex align-items-center">
+                                                                    <label for="price" class="form-label me-4">Price</label>
+                                                                    <div class="flex-grow-1 ms-4">
+                                                                        <input type="text" class="form-control" id="price"
+                                                                        formControlName="price">
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="d-flex align-items-center">
-                                                                <label for="desc1" class="form-label me-3">Bed</label>
+                                                            <div class="d-flex align-items-center mb-3">
+                                                                <label for="offer" class="form-label me-3">Offer</label>
                                                                 <div class="flex-grow-1 ms-4">
-                                                                    <input type="text" class="form-control" id="desc1"
-                                                                    formControlName="desc1">
+                                                                    <input type="text" class="form-control" id="offer"
+                                                                    formControlName="offer">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="w-100 ps-4">
                                                             <div class="d-flex align-items-center mb-3">
-                                                                <label for="desc2" class="form-label me-3">Cancel</label>
+                                                                <label for="benefit1" class="form-label me-3">Benefit</label>
                                                                 <div class="flex-grow-1 ms-4">
-                                                                    <input type="text" class="form-control" id="desc2"
-                                                                    formControlName="desc2">
+                                                                    <input type="text" class="form-control" id="benefit1"
+                                                                    formControlName="benefit1">
                                                                 </div>
                                                             </div>
                                                             <div class="d-flex align-items-center">
-                                                                <label for="desc3" class="form-label me-3">Payment</label>
+                                                                <label for="benefit2" class="form-label me-3"></label>
                                                                 <div class="flex-grow-1 ms-4">
-                                                                    <input type="text" class="form-control" id="desc3"
-                                                                    formControlName="desc3">
+                                                                    <input type="text" class="form-control" id="benefit2"
+                                                                    formControlName="benefit2">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <hr/>
-                                                    <div>
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <label for="photos0" class="form-label me-3">Thumbnail</label>
+                                                    <div class="d-flex align-items-center my-2">
+                                                        <div class="d-flex align-items-center w-100">
+                                                            <label for="breakfast" class="form-label me-3">Breakfast</label>
                                                             <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="photos0"
-                                                                formControlName="photos0">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <label for="photos1" class="form-label me-3">Photos</label>
-                                                            <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="photos1"
-                                                                formControlName="photos1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <label for="photos2" class="form-label me-3"></label>
-                                                            <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="photos2"
-                                                                formControlName="photos2">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <label for="photos3" class="form-label me-3"></label>
-                                                            <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="photos3"
-                                                                formControlName="photos3">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-center">
-                                                            <label for="photos4" class="form-label me-3"></label>
-                                                            <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="photos4"
-                                                                formControlName="photos4">
+                                                                <input type="text" class="form-control" id="breakfast"
+                                                                formControlName="breakfast">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <hr/>
-                                                    <div>
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <label for="details0" class="form-label me-3">Details</label>
-                                                            <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="details0"
-                                                                formControlName="details0">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <label for="details1" class="form-label me-3"></label>
-                                                            <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="details1"
-                                                                formControlName="details1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <label for="details2" class="form-label me-3"></label>
-                                                            <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="details2"
-                                                                formControlName="details2">
-                                                            </div>
-                                                        </div>
-                                                        <div class="d-flex align-items-center mb-3">
-                                                            <label for="details3" class="form-label me-3"></label>
-                                                            <div class="flex-grow-1 ms-4">
-                                                                <input type="text" class="form-control" id="details3"
-                                                                formControlName="details3">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form> -->
+                                                </form>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn delete-btn d-flex justify-content-center" data-bs-dismiss="modal"

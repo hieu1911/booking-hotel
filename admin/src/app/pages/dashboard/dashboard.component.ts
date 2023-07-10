@@ -56,12 +56,12 @@ export class DashboardComponent{
     totalRevenue: number = 0;
     categories: string[] =  [
         "Da Lat",
-        "HCM City",
+        "Ho Chi Minh City",
         "Nha Trang",
         "Da Nang",
         "Hoi An",
-        "Cam Ranh",
-        "Vung Tau"
+        "Hue",
+        "Ha Giang"
     ];
     
     dataChats: number[] = [];
@@ -73,6 +73,8 @@ export class DashboardComponent{
         private reservationServices: ReservationService
         ) {
         this.hotelServices.getCountHotelInCities(this.categories);
+        
+        // has a bug here
         this.hotelServices.countHotelInCities$.subscribe(r => {
             this.dataChats = r;
             this.hotelChartOptions = {

@@ -22,7 +22,7 @@ router.get('/', getAllRoomOptions);
 // create
 router.post('/', checkRoomID, createRoomOptions);
 // update
-router.put('/:id', updateRoomOptions);
+router.put('/update/:id', updateRoomOptions);
 // update avaibility 
 router.put('/avaibility/:id', updateRoomAvailability);
 // delete

@@ -25,7 +25,7 @@ const RoomTypeSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    flatSceenTV: {
+    flatScreenTV: {
         type: Boolean,
         required: true
     },

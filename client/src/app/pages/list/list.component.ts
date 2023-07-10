@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { HotelService } from '../../services/hotel.service';
+import { RoomService } from 'src/app/services/room.service';
 import { Hotel } from '../../models/hotel'
 
 @Component({
@@ -36,7 +37,7 @@ export class ListComponent {
 
   hotelList$: Observable<Hotel[]>;
 
-  constructor(private hotelService: HotelService, private router: Router) {
+  constructor(private router: Router, private hotelService: HotelService, private roomService: RoomService) {
     window.scroll(0, 0)
     
     this.hotelList$ = this.hotelService.hotelListObservable$;
@@ -46,6 +47,7 @@ export class ListComponent {
 
   navigateHotelDetail(hotel: Hotel): void {
     this.hotelService.getHotelDetail(hotel);
+    this.roomService.getRoomInHotel(hotel._id);
     this.router.navigate(['/hotel-detail'])
   }
 }

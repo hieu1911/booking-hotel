@@ -45,6 +45,15 @@ export class RoomComponent implements OnInit {
     });
 
     this.initCreateForm();
+    this.editForm = this.fb.group({
+      roomID: ['', Validators.required],
+      maxPeople: [2],
+      price: [''],
+      offer: ['Includes taxes and fees'],
+      benefit1: ['Free cancellation'],
+      benefit2: ['No prepayment needed'],
+      breakfast: ['Breakfast US$5 (optional)']
+    })
   }
 
   initCreateForm(): void {
@@ -87,11 +96,28 @@ export class RoomComponent implements OnInit {
   }
 
   initEditRoomForm(roomObj: RoomObj): void {
-
+    this.editForm = this.fb.group({
+      roomID: [roomObj.roomOption._id, Validators.required],
+      maxPeople: [roomObj.roomOption.maxPeoples],
+      price: [roomObj.roomOption.price],
+      offer: [roomObj.roomOption.title],
+      benefit1: [roomObj.roomOption.desc[0]],
+      benefit2: [roomObj.roomOption.desc[1]],
+      breakfast: [roomObj.roomOption.breakfastOption]
+    })
   }
 
   onUpdateRoom(): void {
+    this.roomService.updateRoomOption(this.editForm);
+    document.getElementById('update-btn-close')?.click();
+  }
 
+  submitCreateForm(): void {
+    if (this.createNewRoom) {
+      this.createRoom();
+    } else {
+      this.addRoom();
+    }
   }
 
   createRoom(): void {

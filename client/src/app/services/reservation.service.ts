@@ -51,9 +51,9 @@ export class ReservationService {
       let reservationsObj: ReservationObject[] = [];
 
       res.forEach(reservation => {
-        this.httpClient.get<RoomOptions>(environment.roomOptions + `/${reservation.roomOptionID}`).subscribe(roomOptions => {
-          this.httpClient.get<Room>(environment.room + `/${roomOptions.roomID}`).subscribe(room => {
-            this.httpClient.get<Hotel>(environment.hotel + `/${room.hotelID}`).subscribe(hotel => {
+        this.httpClient.get<RoomOptions>(environment.roomOptions + `/id/${reservation.roomOptionID}`).subscribe(roomOptions => {
+          this.httpClient.get<Room>(environment.room + `/id/${roomOptions.roomID}`).subscribe(room => {
+            this.httpClient.get<Hotel>(environment.hotel + `/id/${room.hotelID}`).subscribe(hotel => {
               reservationsObj.push({reservation, roomOptions, room, hotel});
               this.reservationSubject.next(reservationsObj);
             })

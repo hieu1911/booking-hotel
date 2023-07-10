@@ -37,13 +37,6 @@ export class MenuComponent implements OnInit {
             title: 'Room',
             active: false,
             navigator: '/room'
-        },
-        {
-            img: '../../../assets/images/reservation.png',
-            img_active: '../../../assets/images/reservation_active.png',
-            title: 'Reservation',
-            active: false,
-            navigator: '/reservation'
         }
     ]
     

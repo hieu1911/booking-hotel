@@ -36,30 +36,38 @@ export class HotelComponent implements OnInit {
       this.hotelService.searchHotelByName(this.searchVal);
     });
 
-    this.createForm = this.fb.group({
-     city: ['', Validators.required],
-     type: ['hotel', Validators.required],
-     distance: ['', Validators.required],
-     minPrice: ['', Validators.required],
-     name: ['', Validators.required],
-     address: ['', Validators.required],
-     rating: ['', Validators.required],
-     review: ['', Validators.required],
-     desc0: ['', Validators.required],
-     desc1: ['', Validators.required],
-     desc2: ['FREE cancellation', Validators.required],
-     desc3: ['No prepayment needed', Validators.required],
-     photos0: [''],
-     photos1: [''],
-     photos2: [''],
-     photos3: [''],
-     photos4: [''],
-     details0: [''],
-     details1: [''],
-     details2: [''],
-     details3: [''],
-    });
+    this.initCreateForm();
+    this.initEditForm();
+  }
 
+  initCreateForm(): void {
+    this.createForm = this.fb.group({
+      city: ['', Validators.required],
+      type: ['hotel', Validators.required],
+      distance: ['', Validators.required],
+      minPrice: ['', Validators.required],
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      rating: ['', Validators.required],
+      review: ['', Validators.required],
+      desc0: ['', Validators.required],
+      desc1: ['', Validators.required],
+      desc2: ['FREE cancellation', Validators.required],
+      desc3: ['No prepayment needed', Validators.required],
+      photos0: [''],
+      photos1: [''],
+      photos2: [''],
+      photos3: [''],
+      photos4: [''],
+      photos5: [''],
+      details0: [''],
+      details1: [''],
+      details2: [''],
+      details3: [''],
+     });
+  }
+
+  initEditForm(): void {
     this.editForm = this.fb.group({
       id: ['', Validators.required],
       city: ['', Validators.required],
@@ -79,6 +87,7 @@ export class HotelComponent implements OnInit {
       photos2: [''],
       photos3: [''],
       photos4: [''],
+      photos5: [''],
       details0: [''],
       details1: [''],
       details2: [''],
@@ -98,7 +107,8 @@ export class HotelComponent implements OnInit {
         this.createForm.value.photos1.trim(),
         this.createForm.value.photos2.trim(),
         this.createForm.value.photos3.trim(),
-        this.createForm.value.photos4.trim()
+        this.createForm.value.photos4.trim(),
+        this.createForm.value.photos5.trim()
       ],
       [
         this.createForm.value.desc0.trim(),
@@ -144,6 +154,7 @@ export class HotelComponent implements OnInit {
       photos2: [hotel.photos[2]],
       photos3: [hotel.photos[3]],
       photos4: [hotel.photos[4]],
+      photos5: [hotel.photos[5]],
       details0: [hotel.details[0]],
       details1: [hotel.details[1]],
       details2: [hotel.details[2]],
@@ -164,7 +175,8 @@ export class HotelComponent implements OnInit {
         this.editForm.value.photos1?.trim(),
         this.editForm.value.photos2?.trim(),
         this.editForm.value.photos3?.trim(),
-        this.editForm.value.photos4?.trim()
+        this.editForm.value.photos4?.trim(),
+        this.editForm.value.photos5?.trim()
       ],
       [
         this.editForm.value.desc0?.trim(),

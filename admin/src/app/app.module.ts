@@ -14,7 +14,6 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MenuComponent } from './pages/components/menu/menu.component';
 import { HotelComponent } from './pages/hotel/hotel.component';
 import { RoomComponent } from './pages/room/room.component';
-import { ReservationComponent } from './pages/reservation/reservation.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { ReservationComponent } from './pages/reservation/reservation.component'
     DashboardComponent,
     MenuComponent,
     HotelComponent,
-    RoomComponent,
-    ReservationComponent
+    RoomComponent
   ],
   imports: [
     BrowserModule,

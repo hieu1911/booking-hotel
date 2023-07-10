@@ -86,7 +86,9 @@ export class HotelComponent {
     this.hotelDetail$ = this.hotelService.hotelDetailObservable$;
     this.hotelDetail$.subscribe(hotel => {
       this.hotelDetail = hotel
-      this.roomService.getRoomInHotel(hotel._id);
+      if (hotel._id) {
+        this.roomService.getRoomInHotel(hotel._id);
+      }
     });
   }
 
@@ -150,7 +152,7 @@ export class HotelComponent {
 
   reservated(): void {
     if (this.noLogin) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/login']);
     } else if (this.numberRooms > 0) {
       this.roomSelect.forEach(room => {
         if (room.count > 0) {
